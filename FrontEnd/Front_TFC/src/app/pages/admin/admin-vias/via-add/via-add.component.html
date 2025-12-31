@@ -1,0 +1,63 @@
+<section class="via-add-container">
+  <div class="via-card">
+
+    <div class="via-header">
+      <h2>Crear Nueva Vía</h2>
+      <p>Introduce los datos para registrar la vía</p>
+    </div>
+
+    @if (error) {
+      <div class="error-alert">
+        {{ error }}
+      </div>
+    }
+
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+      <div class="campo">
+        <label>Tipo</label>
+        <select formControlName="tipo" class="input-field">
+          <option value="" disabled selected>Selecciona un tipo</option>
+          <option *ngFor="let tipo of tipos" [value]="tipo">{{ tipo }}</option>
+        </select>
+        @if(checkControl('tipo','required')) {
+          <small>El tipo es obligatorio.</small>
+        }
+      </div>
+
+      <div class="campo">
+        <label>Dificultad</label>
+        <select formControlName="dificultad" class="input-field">
+          <option value="" disabled selected>Selecciona dificultad</option>
+          <option *ngFor="let dif of dificultades" [value]="dif">{{ dif }}</option>
+        </select>
+        @if(checkControl('dificultad','required')) {
+          <small>La dificultad es obligatoria.</small>
+        }
+      </div>
+
+      <div class="campo">
+        <label>Ubicación</label>
+        <select formControlName="ubicacion" class="input-field">
+          <option value="" disabled selected>Selecciona ubicación</option>
+          <option *ngFor="let ubi of ubicaciones" [value]="ubi">{{ ubi }}</option>
+        </select>
+        @if(checkControl('ubicacion','required')) {
+          <small>La ubicación es obligatoria.</small>
+        }
+      </div>
+
+      <input formControlName="estado" type="hidden" />
+      <input formControlName="idRocodromo" type="hidden" />
+
+      <button type="submit" class="btn-submit" [disabled]="form.invalid">
+        Crear Vía
+      </button>
+
+      <button routerLink="/admin/vias" type="button" class="btn-volver">
+        Volver
+      </button>
+
+    </form>
+  </div>
+</section>

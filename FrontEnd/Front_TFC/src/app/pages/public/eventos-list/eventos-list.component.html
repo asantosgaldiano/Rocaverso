@@ -1,0 +1,14 @@
+<section class="py-5 px-4 container lista-section">
+
+  @if (eventos().length > 0) {
+    <div class="row g-4">
+      @for (evento of eventos(); track evento.idEvento) {
+        <div class="col-12 col-md-6 col-lg-4">
+          <app-eventos-card [evento]="evento" />
+        </div>
+      }
+    </div>
+  } @else {
+    <p class="text-muted text-center">No hay eventos disponibles en este momento.</p>
+  }
+</section>

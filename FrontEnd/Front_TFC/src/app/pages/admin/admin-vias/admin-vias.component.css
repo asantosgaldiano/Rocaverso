@@ -1,0 +1,158 @@
+.vias-container {
+    max-width: 1300px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: #fff;
+    border-radius: 14px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+    font-family: 'Poppins', sans-serif;
+    color: #1d2b2f;
+}
+
+/* HEADER */
+.vias-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 0.8rem;
+}
+
+.vias-title {
+    font-size: 1.9rem;
+    font-weight: 700;
+    color: var(--verde-oscuro);
+}
+
+.vias-subtitle {
+    color: #607d7d;
+    font-size: 0.95rem;
+    margin-top: 0.2rem;
+}
+
+.vias-buttons {
+      display: flex;
+      gap: 0.8rem;
+}
+
+/* BOTÓN PRINCIPAL */
+.btn-primario,
+.btn-volver {
+    background-color: var(--verde-principal);
+    color: white;
+    padding: 0.55rem 1rem;
+    border-radius: 8px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: 0.25s ease;
+}
+
+.btn-primario:hover {
+    background-color: var(--verde-oscuro);
+}
+
+.btn-volver {
+    background-color: transparent;
+    border: 1px solid var(--verde-principal);
+    color: var(--verde-principal);
+}
+
+.btn-volver:hover {
+    background-color: var(--verde-principal);
+    color: white;
+}
+
+/* TABLA */
+.vias-table-wrapper {
+    overflow-x: auto;
+    margin-top: 1rem;
+}
+
+.vias-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.vias-table thead {
+    background: var(--verde-claro);
+}
+
+.vias-table th {
+    padding: 0.8rem;
+    font-weight: 600;
+    color: var(--verde-oscuro);
+    border-bottom: 2px solid var(--verde-principal);
+}
+
+.vias-table td {
+    padding: 0.75rem;
+    border-bottom: 1px solid #e5e7eb;
+    font-size: 0.9rem;
+}
+
+.vias-table tr:hover {
+    background: rgba(46, 139, 139, 0.06);
+}
+
+.text-right {
+    text-align: right;
+}
+
+/* ESTADOS */
+.estado {
+    font-weight: 600;
+}
+
+.estado.verde {
+    color: var(--verde-principal);
+}
+
+.estado.rojo {
+    color: #c0392b;
+}
+
+/* ACCIONES */
+.acciones-wrapper {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.6rem;
+}
+
+.action-link {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.35rem 0.6rem;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: 0.25s ease;
+}
+
+.action-link:hover {
+    background: rgba(0,0,0,0.06);
+}
+
+.action-link.verde {
+    color: var(--verde-principal);
+}
+
+.action-link.rojo {
+    color: #c0392b;
+}
+
+.action-link.azul {
+    color: var(--azul-suave);
+}
+
+.action-link.dorado {
+    color: var(--dorado-acento);
+}
+
+/* VACÍO */
+.vias-empty {
+    text-align: center;
+    margin-top: 2rem;
+    color: #607d7d;
+    font-size: 1.1rem;
+}

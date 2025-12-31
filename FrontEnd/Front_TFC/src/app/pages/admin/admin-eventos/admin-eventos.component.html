@@ -1,0 +1,108 @@
+<div class="eventos-container">
+
+  <!-- HEADER -->
+  <div class="cursos-header">
+    <div>
+      <h2 class="cursos-title">Gestión de Eventos</h2>
+      <p class="cursos-subtitle">Administra los eventos del rocódromo</p>
+    </div>
+
+    <div class="cursos-buttons">
+      <button class="btn-volver" (click)="volverAlPanel()">
+        <i class="bi bi-arrow-left"></i> Volver al panel
+      </button>
+
+      <a routerLink="/admin/eventos/alta" class="btn-primario">
+        <i class="bi bi-plus-circle"></i> Nuevo Evento
+      </a>
+    </div>
+  </div>
+
+  @if (eventos.length > 0) {
+    <div class="cursos-table-wrapper">
+      <table class="cursos-table">
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Fecha</th>
+            <th>Hora Inicio</th>
+            <th>Hora Fin</th>
+            <th>Tipo</th>
+            <th>Zona</th>
+            <th>Estado</th>
+            <th>Aforo Max.</th>
+            <th>Mín. Asistencia</th>
+            <th class="text-right">Acciones</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          @for (evento of eventos; track evento.idEvento) {
+            <tr>
+              <td>{{ evento.nombre }}</td>
+              <td>{{ evento.fechaInicio | date:'dd-MM-yyyy' }}</td>
+              <td>{{ evento.horaInicio | slice:0:5 }}</td>
+              <td>{{ evento.horaFin | slice:0:5 }}</td>
+              <td>{{ evento.tipo }}</td>
+              <td>{{ evento.zona }}</td>
+
+              <td>
+                <span
+                  [ngClass]="[
+                    'estado',
+                    evento.estado === 'ACEPTADO' ? 'verde' :
+                    evento.estado === 'TERMINADO' ? 'azul' :
+                    evento.estado === 'CANCELADO' ? 'rojo' : ''
+                  ]"
+                >
+                  {{ evento.estado }}
+                </span>
+              </td>
+
+              <td>{{ evento.aforoMaximo }}</td>
+
+              <td
+                [ngClass]="{
+                  'minimo verde': esMinimoAsistenciaAlcanzado(evento),
+                  'minimo rojo': !esMinimoAsistenciaAlcanzado(evento)
+                }"
+              >
+                {{ reservasPorEvento[evento.idEvento] || 0 }}
+                /
+                {{ evento.minimoAsistencia }}
+              </td>
+
+              <td class="text-right">
+                <div class="acciones-wrapper">
+
+                  <a [routerLink]="['/evento', evento.idEvento]" class="action-link ver">
+                    Detalle
+                  </a>
+
+                  <button (click)="aceptar(evento.idEvento)" class="action-link aceptar">
+                    Aceptar
+                  </button>
+
+                  <button (click)="terminar(evento.idEvento)" class="action-link terminar">
+                    Terminar
+                  </button>
+
+                  <button (click)="cancelar(evento.idEvento)" class="action-link cancelar">
+                    Cancelar
+                  </button>
+
+                </div>
+              </td>
+
+            </tr>
+          }
+        </tbody>
+
+      </table>
+    </div>
+
+  } @else {
+    <p class="cursos-empty">No hay eventos registrados todavía.</p>
+  }
+
+</div>

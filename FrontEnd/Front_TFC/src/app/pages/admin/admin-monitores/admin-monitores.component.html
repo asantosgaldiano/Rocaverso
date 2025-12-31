@@ -1,0 +1,66 @@
+<div class="usuarios-container">
+
+  <div class="usuarios-header">
+    <div>
+      <h2 class="usuarios-title">Gestión de Monitores</h2>
+      <p class="usuarios-subtitle">Administra los monitores del rocódromo</p>
+    </div>
+
+    <div class="usuarios-buttons">
+      <button class="btn-volver" (click)="volverAlPanel()">
+        <i class="bi bi-arrow-left"></i> Volver al panel
+      </button>
+
+      <button class="btn-primario" (click)="agregarMonitor()">
+        <i class="bi bi-person-plus"></i> Añadir monitor
+      </button>
+    </div>
+  </div>
+
+  @if (monitores.length > 0) {
+    <div class="usuarios-table-wrapper">
+      <table class="usuarios-table">
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Email</th>
+            <th>Rol</th>
+            <th>Estado</th>
+            <th class="text-right">Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (u of monitores; track u.email) {
+            <tr>
+              <td>{{ u.nombre }} {{ u.apellidos }}</td>
+              <td>{{ u.email }}</td>
+              <td>{{ u.rol ?? 'Desconocido' }}</td>
+
+              <td>
+                <span class="{{ u.enabled ? 'estado-activo' : 'estado-inactivo' }}">
+                  {{ u.enabled ? 'Activo' : 'Deshabilitado' }}
+                </span>
+              </td>
+
+              <td class="text-right">
+                @if (u.enabled) {
+                  <button (click)="deshabilitar(u.email)" class="action-link action-danger">
+                    Deshabilitar
+                  </button>
+                } @else {
+                  <button (click)="habilitar(u.email)" class="action-link action-success">
+                    Habilitar
+                  </button>
+                }
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+
+  } @else {
+    <p class="usuarios-empty">No hay monitores registrados todavía.</p>
+  }
+
+</div>

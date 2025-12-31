@@ -1,0 +1,83 @@
+.user-card {
+    /* background: #fff;
+    border-radius: 14px; */
+    padding: 1.6rem;
+    /* box-shadow: 0 3px 10px rgba(0, 0, 0, 0.04); */
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    box-sizing: border-box;
+}
+
+.user-card h3 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--verde-principal);
+    margin: 0;
+}
+
+.user-card .subtitle {
+    font-size: 0.9rem;
+    color: #607d7d;
+    margin: 0 0 0.8rem;
+}
+
+/* Stats alineadas y legibles */
+.stats {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));/* 3 columnas iguales que se adaptan al espacio disponible */
+    gap: 0.9rem;
+    margin-top: 0.4rem;
+}
+
+.stat {
+    background: var(--verde-claro);
+    border-radius: 10px;
+    padding: 0.7rem 0.5rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.25rem;
+}
+
+.stat .number {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--verde-oscuro);
+    line-height: 1.2;
+}
+
+.stat .label {
+    font-size: 0.8rem;
+    color: #1d2b2f;
+    opacity: 0.8;
+    line-height: 1.2;
+    word-break: break-word; /* Permite que palabras largas se partan y no rompan el diseño */
+}
+
+.motivacion {
+    margin-top: 1.2rem;
+    text-align: center;
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--verde-oscuro);
+    padding: 0.7rem 1rem;
+    letter-spacing: 0.3px;
+    font-style: italic;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.45rem;
+}
+
+.icono-montana {
+    font-size: 1.2rem;
+    color: var(--verde-principal);
+}
+
+@media (max-width: 768px) {
+    .stats {
+      grid-template-columns: 1fr;
+    }
+}

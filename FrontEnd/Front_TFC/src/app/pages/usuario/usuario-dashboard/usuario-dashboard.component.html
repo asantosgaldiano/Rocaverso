@@ -1,0 +1,26 @@
+<div class="dashboard">
+  <header class="dashboard-header">
+    <h2>¡Hola de nuevo, {{ nombreUsuario }}!</h2>
+    <button class="btn-calendar" (click)="irACalendario()">Ver Calendario</button>
+  </header>
+
+  <main class="dashboard-grid">
+    <section class="dashboard-row">
+      <div class="dashboard-card">
+        <app-estadisticas-card></app-estadisticas-card>
+      </div>
+      <div class="dashboard-card">
+        <app-vias-realizadas-card></app-vias-realizadas-card>
+      </div>
+    </section>
+
+    <section class="dashboard-row">
+      <div class="dashboard-card">
+        <app-mis-inscripciones-card></app-mis-inscripciones-card>
+      </div>
+      <div class="dashboard-card">
+        <app-mis-reservas-card></app-mis-reservas-card>
+      </div>
+    </section>
+  </main>
+</div>

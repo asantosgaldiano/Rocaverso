@@ -1,0 +1,108 @@
+<div class="cursos-container">
+
+  <!-- HEADER -->
+  <div class="cursos-header">
+    <div>
+      <h2 class="cursos-title">Gestión de Cursos</h2>
+      <p class="cursos-subtitle">Administra los cursos del rocódromo</p>
+    </div>
+    <div class="cursos-buttons">
+      <button class="btn-volver" (click)="volverAlPanel()">
+        <i class="bi bi-arrow-left"></i> Volver al panel
+      </button>
+      <a routerLink="/admin/cursos/alta" class="btn-primario">
+        <i class="bi bi-plus-circle"></i> Nuevo Curso
+      </a>
+    </div>
+  </div>
+
+  @if (cursos.length > 0) {
+    <div class="cursos-table-wrapper">
+      <table class="cursos-table">
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Inicio</th>
+            <th>Fin</th>
+            <th>Estado</th>
+            <th>Precio</th>
+            <th>Monitor</th>
+            <th>Aforo</th>
+            <th>Mín. Asistencia</th>
+            <th>Días / Semana</th>
+            <th class="text-right">Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (curso of cursos; track curso.idCurso) {
+            <tr>
+              <td>{{ curso.nombre }}</td>
+              <td>{{ curso.fechaInicio | date:'dd-MM-yyyy' }}</td>
+              <td>{{ curso.fechaFin | date:'dd-MM-yyyy' }}</td>
+              <td>
+                <span
+                  [ngClass]="[
+                    'estado',
+                    curso.estado === 'ACEPTADO' ? 'verde' :
+                    curso.estado === 'TERMINADO' ? 'azul' :
+                    curso.estado === 'CANCELADO' ? 'rojo' : ''
+                  ]"
+                >
+                  {{ curso.estado }}
+                </span>
+              </td>
+              <td>{{ curso.precio | currency:'EUR':'symbol':'1.0-0' }}</td>
+              <td>{{ curso.nombreMonitor }}</td>
+              <td>{{ curso.aforoMaximo }}</td>
+              <td
+                [ngClass]="{
+                  'minimo verde': esMinimoAsistenciaAlcanzado(curso),
+                  'minimo rojo': !esMinimoAsistenciaAlcanzado(curso)
+                }"
+              >
+                {{ inscripcionesPorCurso[curso.idCurso] || 0 }} /
+                {{ curso.minimoAsistencia }}
+              </td>
+              <td>
+                {{ planificacionesPorCurso[curso.idCurso] || 0 }}
+              </td>
+              <td class="text-right">
+                <div class="acciones-wrapper">
+                  <a
+                    [routerLink]="['/curso', curso.idCurso]"
+                    class="action-link ver"
+                  >
+                    Detalle
+                  </a>
+                  <button
+                    (click)="aceptar(curso.idCurso)"
+                    class="action-link aceptar"
+                  >
+                    Aceptar
+                  </button>
+                  <button
+                    (click)="terminar(curso.idCurso)"
+                    class="action-link terminar"
+                  >
+                    Terminar
+                  </button>
+                  <button
+                    (click)="cancelar(curso.idCurso)"
+                    class="action-link cancelar"
+                  >
+                    Cancelar
+                  </button>
+                </div>
+              </td>
+            </tr>
+          }
+        </tbody>
+
+      </table>
+    </div>
+
+  } @else {
+    <p class="cursos-empty">No hay cursos registrados todavía.</p>
+  }
+
+</div>

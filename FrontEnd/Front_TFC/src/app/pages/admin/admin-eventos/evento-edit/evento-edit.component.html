@@ -1,0 +1,140 @@
+<section class="evento-edit-container">
+  <div class="evento-card">
+
+    <div class="evento-header">
+      <h2>Editar Evento</h2>
+      <p>Modifica los datos y guarda los cambios</p>
+    </div>
+
+    @if (error) {
+      <div class="error-alert">
+        {{ error }}
+      </div>
+    }
+
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+      <div class="campo">
+        <label>Nombre</label>
+        <input formControlName="nombre" type="text" class="input-field" />
+        @if (checkControl('nombre','required')) {
+          <small>El nombre es obligatorio.</small>
+        }
+      </div>
+
+      <div class="campo">
+        <label>Descripción</label>
+        <textarea formControlName="descripcion" class="input-field"></textarea>
+        @if (checkControl('descripcion','required')) {
+          <small>La descripción es obligatoria.</small>
+        }
+      </div>
+
+      <div class="campo">
+        <label>Fecha Inicio</label>
+        <input formControlName="fechaInicio" type="date" class="input-field" />
+        @if (checkControl('fechaInicio','required')) {
+          <small>La fecha de inicio es obligatoria.</small>
+        }
+      </div>
+
+      <div class="campo">
+        <label>Hora Inicio</label>
+        <input formControlName="horaInicio" type="time" class="input-field" />
+        @if (checkControl('horaInicio','required')) {
+          <small>La hora de inicio es obligatoria.</small>
+        }
+      </div>
+
+      <div class="campo">
+        <label>Hora Fin</label>
+        <input formControlName="horaFin" type="time" class="input-field" />
+        @if (checkControl('horaFin','required')) {
+          <small>La hora de fin es obligatoria.</small>
+        }
+        @if (form.hasError('horaFinMenor') && form.get('horaFin')?.touched) {
+          <small>La hora de fin no puede ser anterior a la hora de inicio.</small>
+        }
+      </div>
+
+      <div class="campo">
+        <label>Aforo Máximo</label>
+        <input formControlName="aforoMaximo" type="number" class="input-field" />
+        @if (checkControl('aforoMaximo','required')) {
+          <small>El aforo máximo es obligatorio.</small>
+        }
+        @if (checkControl('aforoMaximo','min')) {
+          <small>Debe ser mayor que 0.</small>
+        }
+      </div>
+
+      <div class="campo">
+        <label>Mínimo Asistencia</label>
+        <input formControlName="minimoAsistencia" type="number" class="input-field" />
+        @if (checkControl('minimoAsistencia','required')) {
+          <small>El mínimo de asistencia es obligatorio.</small>
+        }
+        @if (checkControl('minimoAsistencia','min')) {
+          <small>No puede ser menor que 0.</small>
+        }
+        @if (form.hasError('minimoMayorQueAforo') && form.get('minimoAsistencia')?.touched) {
+          <small>El mínimo de asistencia no puede ser mayor que el aforo máximo.</small>
+        }
+      </div>
+
+      <div class="campo">
+        <label>Precio (€)</label>
+        <input formControlName="precio" type="number" class="input-field" />
+        @if (checkControl('precio','required')) {
+          <small>El precio es obligatorio.</small>
+        }
+        @if (checkControl('precio','min')) {
+          <small>El precio no puede ser negativo.</small>
+        }
+      </div>
+
+      <div class="campo">
+        <label>Imagen (URL)</label>
+        <input formControlName="imagen" type="text" class="input-field" />
+        @if (checkControl('imagen','required')) {
+          <small>La imagen es obligatoria.</small>
+        }
+      </div>
+
+      <div class="campo">
+        <label>Tipo de Evento</label>
+        <select formControlName="idTipo" class="input-field">
+          <option *ngFor="let tipo of tipos" [value]="tipo.idTipo">
+            {{ tipo.nombre }}
+          </option>
+        </select>
+        @if (checkControl('idTipo','required')) {
+          <small>El tipo es obligatorio.</small>
+        }
+      </div>
+
+      <div class="campo">
+        <label>Zona</label>
+        <select formControlName="zona" class="input-field">
+          <option *ngFor="let zona of zonas" [value]="zona">
+            {{ zona }}
+          </option>
+        </select>
+        @if (checkControl('zona','required')) {
+          <small>La zona es obligatoria.</small>
+        }
+      </div>
+
+      <input type="hidden" formControlName="idRocodromo" />
+
+      <button type="submit" class="btn-submit" [disabled]="form.invalid">
+        Guardar Cambios
+      </button>
+
+      <button routerLink="/admin/eventos" type="button" class="btn-volver">
+        Volver
+      </button>
+
+    </form>
+  </div>
+</section>

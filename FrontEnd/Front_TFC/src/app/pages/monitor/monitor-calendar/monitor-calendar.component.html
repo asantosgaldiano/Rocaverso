@@ -1,0 +1,38 @@
+<div class="monitor-calendar">
+
+  <div class="calendar-header">
+    <h2>Mi Calendario de Cursos</h2>
+
+    <button class="btn-volver" (click)="volverAlPanel()">
+      <i class="bi bi-arrow-left"></i> Volver al panel
+    </button>
+  </div>
+
+  @if (calendarOptions()) {
+
+    <!-- Botones vista -->
+    <div class="calendar-view-buttons">
+      <button class="btn-view" (click)="cambiarVista('dayGridMonth')">
+        Mes
+      </button>
+
+      <button class="btn-view" (click)="cambiarVista('timeGridWeek')">
+        Semana
+      </button>
+
+      <button class="btn-view" (click)="cambiarVista('timeGridDay')">
+        Día
+      </button>
+    </div>
+
+    <div class="calendar-wrapper">
+      <full-calendar #fullCalendar [options]="calendarOptions()"></full-calendar>
+    </div>
+
+  } @else {
+    <div class="calendar-loading">
+      <p>Cargando calendario de cursos...</p>
+    </div>
+  }
+
+</div>

@@ -1,0 +1,68 @@
+@if (cargando) {
+  <div class="spinner-container">
+    <div class="spinner-border text-light" role="status">
+      <span class="visually-hidden">Cargando...</span>
+    </div>
+  </div>
+}
+@else {
+  <div class="evento-page">
+    <div class="container px-4 px-md-5">
+      <div class="card evento-detail-card">
+
+        <!-- Imagen -->
+        <div class="evento-image mb-3 text-center">
+          <img [src]="evento.imagen"
+               [alt]="evento.nombre"
+               class="img-fluid rounded shadow-lg" />
+        </div>
+
+        <!-- Contenido -->
+        <h1 class="evento-title text-center">{{ evento.nombre }}</h1>
+        <p class="evento-description text-center">
+          {{ evento.descripcion }}
+        </p>
+
+        <div class="row evento-info mb-2">
+          <div class="col-6">
+            <strong>Fecha:</strong><br>
+            {{ evento.fechaInicio | date:'dd-MM-yyyy' }}
+          </div>
+          <div class="col-6">
+            <strong>Horario:</strong><br>
+            {{ evento.horaInicio.substring(0,5) }} - {{ evento.horaFin.substring(0,5) }}
+          </div>
+        </div>
+
+        <div class="row evento-info mb-2">
+          <div class="col-6">
+            <strong>Zona:</strong><br> {{ evento.zona }}
+          </div>
+          <div class="col-6">
+            <strong>Tipo:</strong><br> {{ evento.tipo }}
+          </div>
+        </div>
+
+        <div class="row evento-info mb-2">
+          <div class="col-6">
+            <strong>Plazas libres:</strong><br>
+            <span class="badge evento-badge" [ngClass]="aforo">
+              {{ evento.plazasLibres }} libres
+            </span>
+          </div>
+          <div class="col-6">
+            <strong>Precio:</strong><br>
+            <span class="evento-price fw-bold">
+              {{ evento.precio | currency: 'EUR' }}
+            </span>
+          </div>
+        </div>
+
+        <div class="d-flex justify-content-center mt-auto">
+          <app-evento-botonera [evento]="evento"></app-evento-botonera>
+        </div>
+
+      </div>
+    </div>
+  </div>
+}

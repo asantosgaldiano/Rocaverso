@@ -1,0 +1,174 @@
+
+/* Fondo general con gradiente del sitio */
+.login-page {
+    background: linear-gradient(135deg, #0077b6, #00b48a);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Tarjeta principal del login */
+.login-card {
+    background-color: rgba(0, 0, 0, 0.65);
+    color: var(--blanco);
+    border-radius: 1rem;
+    padding: 2.5rem;
+    width: 100%;
+    max-width: 500px;
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.25);
+    text-align: left;
+}
+
+/* Títulos */
+.login-title {
+    color: var(--dorado-acento);
+    font-weight: 700;
+    font-size: 2.5rem;
+}
+
+.login-subtitle {
+    color: var(--blanco);
+    font-weight: 600;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+/* Inputs */
+.login-card label {
+    font-weight: 500;
+    color: var(--blanco);
+    margin-bottom: 0.25rem;
+    display: block;
+}
+
+.login-card input[type="email"],
+.login-card input[type="password"] {
+    width: 100%;
+    padding: 0.6rem 0.8rem;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    background-color: rgba(255, 255, 255, 0.1);
+    color: var(--blanco);
+    transition: all 0.2s ease;
+}
+
+.login-card input:focus {
+    border-color: var(--dorado-acento);
+    outline: none;
+    background-color: rgba(255, 255, 255, 0.15);
+}
+
+/* Checkbox y enlaces */
+.btn-toggle-password {
+    background: none;
+    border: none;
+    color: var(--verde-principal);
+    text-decoration: underline;
+    font-weight: 500;
+    cursor: pointer;
+    margin-top: 0.25rem;
+    padding: 0;
+}
+
+.btn-toggle-password:hover {
+    color: var(--verde-oscuro);
+}
+
+.login-link {
+    color: var(--dorado-acento);
+    text-decoration: none;
+    transition: opacity 0.3s ease;
+}
+
+.login-link:hover {
+    opacity: 0.8;
+}
+
+/* Botón principal */
+.login-btn {
+    width: 100%;
+    background-color: var(--verde-principal);
+    color: var(--blanco);
+    border: none;
+    border-radius: 8px;
+    padding: 0.75rem;
+    font-weight: 600;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.login-btn:hover {
+    background-color: var(--verde-oscuro);
+    transform: translateY(-2px);
+}
+
+.login-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* Error */
+.login-error {
+    background-color: rgba(255, 0, 0, 0.15);
+    color: #ffb3b3;
+    border: 1px solid rgba(255, 0, 0, 0.25);
+    border-radius: 8px;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+}
+.login-small-error {
+    display: block;
+    margin-top: 0.6rem;
+    padding: 0.55rem 0.75rem;
+    background-color: rgba(255, 60, 60, 0.25);
+    color: #ff8a8a;
+    font-weight: 500;
+    border: 1px solid rgba(255, 60, 60, 0.45);
+    border-left-width: 4px; 
+    border-left-color: #ff4d4d;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    backdrop-filter: blur(3px);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.35);
+}
+
+/* Enlace “Volver” */
+.login-back {
+    display: inline-block;
+    margin-top: 0.5rem;
+    color: var(--blanco);
+    border: 1px solid var(--blanco);
+    padding: 0.3rem 1rem;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.login-back:hover {
+    background-color: var(--dorado-acento);
+    color: #1d2b2f;
+    border-color: var(--dorado-acento);
+}
+
+/* Adaptación móvil */
+@media (max-width: 768px) {
+    .login-card {
+        padding: 1.5rem;
+        border-radius: 0.8rem;
+    }
+
+    .login-title {
+        font-size: 1.5rem;
+    }
+
+    .login-subtitle {
+        font-size: 1.2rem;
+    }
+
+    .login-btn {
+        font-size: 0.95rem;
+    }
+}

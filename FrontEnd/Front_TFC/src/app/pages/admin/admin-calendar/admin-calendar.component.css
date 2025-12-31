@@ -1,0 +1,206 @@
+/* CONTENEDOR GENERAL */
+.calendar-container {
+    font-family: 'Poppins', sans-serif;
+    color: #1d2b2f;
+    padding: 3rem 2rem;
+    max-width: 1500px;
+    margin: 0 auto;
+    min-height: 100vh;
+    box-sizing: border-box;
+}
+
+/* HEADER */
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.calendar-header h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--verde-oscuro);
+    margin: 0;
+}
+
+/* BOTÓN VOLVER */
+.btn-volver {
+    background-color: var(--verde-principal);
+    color: var(--blanco);
+    border: none;
+    border-radius: 10px;
+    padding: 0.6rem 1.3rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-volver:hover {
+    background-color: var(--verde-oscuro);
+    transform: translateY(-1px);
+}
+
+/* BOTONES VISTA CALENDARIO */
+.calendar-toolbar {
+    display: flex;
+    justify-content: flex-start;
+    gap: 0.6rem;
+    margin-bottom: 1.5rem;
+}
+
+.btn-vista {
+    background-color: transparent;
+    border: 1px solid var(--verde-principal);
+    color: var(--verde-principal);
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    padding: 0.4rem 0.9rem;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+.btn-vista:hover {
+    background-color: var(--verde-principal);
+    color: var(--blanco);
+}
+
+/* CONTENEDOR FULLCALENDAR */
+.calendar-wrapper {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+    padding: 1rem;
+}
+
+.calendar-loading {
+    text-align: center;
+    color: #8aa3a3;
+    font-style: italic;
+    padding: 2rem 0;
+    font-size: 1rem;
+}
+
+/* FULLCALENDAR (PERSONALIZACIÓN) */
+/* Fuerza estilos dentro de FullCalendar ignorando el encapsulamiento del componente */
+:host ::ng-deep .fc {
+    font-family: 'Poppins', sans-serif;
+    color: #1d2b2f;
+}
+
+/* Toolbar superior (navegación) */
+:host ::ng-deep .fc-toolbar {
+    background: #fff;
+    border-radius: 10px;
+    padding: 0.6rem 1rem;
+    margin-bottom: 1rem;
+}
+
+:host ::ng-deep .fc-toolbar-title {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--verde-oscuro);
+}
+
+/* Botones de navegación */
+:host ::ng-deep .fc-button {
+    background-color: transparent;
+    border: 1px solid var(--verde-principal);
+    color: var(--verde-principal);
+    border-radius: 8px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    padding: 0.3rem 0.7rem;
+    text-transform: capitalize;
+    transition: all 0.25s ease;
+}
+
+:host ::ng-deep .fc-button:hover {
+    background-color: var(--verde-principal);
+    color: var(--blanco);
+}
+
+:host ::ng-deep .fc-button.fc-button-active {
+    background-color: var(--verde-principal);
+    color: var(--blanco);
+}
+
+/* Día actual */
+:host ::ng-deep .fc-day-today {
+    background-color: rgba(46, 139, 139, 0.1) !important;
+    border: 1.5px solid var(--verde-principal) !important;
+}
+
+/* Celdas día */
+:host ::ng-deep .fc-daygrid-day-frame {
+    background-color: #fff;
+    border-radius: 6px;
+    transition: background 0.2s ease;
+}
+
+:host ::ng-deep .fc-daygrid-day:hover {
+    background-color: rgba(46, 139, 139, 0.05);
+}
+
+/* Número del día */
+:host ::ng-deep .fc-daygrid-day-number {
+    font-weight: 600;
+    color: var(--verde-oscuro);
+    font-size: 0.9rem;
+}
+
+/* Cabecera días (Lun, Mar, Mié...) */
+:host ::ng-deep .fc-col-header-cell-cushion {
+    color: var(--verde-principal);
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+/* ESTILOS EVENTOS */
+:host ::ng-deep .fc-event {
+    border: none;
+    border-radius: 8px;
+    padding: 0.3rem 0.4rem;
+    color: #fff;
+    font-size: 0.75rem;
+    font-weight: 500;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+:host ::ng-deep .fc-event:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Bordes generales */
+:host ::ng-deep .fc-scrollgrid {
+    border: none;
+}
+
+:host ::ng-deep .fc-theme-standard td,
+:host ::ng-deep .fc-theme-standard th {
+    border-color: rgba(0, 0, 0, 0.05);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .calendar-container {
+        padding: 2rem 1rem;
+    }
+
+    .calendar-header h2 {
+        font-size: 1.6rem;
+    }
+
+    .calendar-toolbar {
+        flex-wrap: wrap;
+    }
+
+    .btn-vista {
+        flex: 1 1 auto;
+        text-align: center;
+    }
+}

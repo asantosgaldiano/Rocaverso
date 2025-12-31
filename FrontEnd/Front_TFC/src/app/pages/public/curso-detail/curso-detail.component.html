@@ -1,0 +1,91 @@
+@if (cargando) {
+  <div class="spinner-container">
+    <div class="spinner-border text-light" role="status">
+      <span class="visually-hidden">Cargando...</span>
+    </div>
+  </div>
+}
+@else {
+  <div class="curso-page">
+    <div class="container px-4 px-md-5">
+      <div class="card curso-detail-card">
+
+        <h1 class="curso-title text-center">{{ curso.nombre }}</h1>
+        <p class="curso-description text-center">{{ curso.descripcion }}</p>
+
+        <div class="row curso-info mb-3">
+          <div class="col-6">
+            <strong>Fecha Inicio:</strong><br> {{ curso.fechaInicio | date:'dd-MM-yyyy' }}
+          </div>
+          <div class="col-6">
+            <strong>Fecha Fin:</strong><br> {{ curso.fechaFin | date:'dd-MM-yyyy' }}
+          </div>
+        </div>
+
+        <div class="row curso-info mb-3">
+          <div class="col-6">
+            <strong>Monitor:</strong><br> {{ curso.nombreMonitor }}
+          </div>
+          <div class="col-6">
+            <strong>Zona:</strong><br> {{ curso.zona }}
+          </div>
+        </div>
+
+        <div class="row curso-info mb-5">
+          <div class="col-6">
+            <strong>Precio:</strong><br>
+            <span class="curso-price fw-bold">
+              {{ curso.precio | currency:'EUR' }}
+            </span>
+          </div>
+          <div class="col-6">
+            <strong>Plazas: </strong><br>
+            <span class="badge curso-badge" [ngClass]="aforo">
+              {{ curso.plazasLibres }} libres
+            </span>
+          </div>
+        </div>
+
+        <h4 class="mb-3">
+          <i class="bi bi-calendar-week"></i> Planificación
+        </h4>
+        @if (planificaciones().length > 0) {
+        <ul class="list-group mb-4">
+            @for (p of planificaciones(); track p.idPlanificacion) {
+            <li class="list-group-item bg-transparent text-light border-light rounded mb-1">
+                <strong>{{ p.diaSemana }}</strong>: {{ p.horaInicio.substring(0,5) }} - {{ p.horaFin.substring(0,5) }}
+            </li>
+            }
+        </ul>
+        } @else {
+        <p>No hay planificación disponible.</p>
+        }
+
+        <!-- Asistentes para MONITOR y ADMON-->
+        @if (auth.getRole() === 'MONITOR' || auth.getRole() === 'ADMON') {
+          <div class="card bg-dark bg-opacity-50 border border-warning mb-4 p-3">
+          <h4 class="text-warning mb-3"><i class="bi bi-people-fill"></i> Asistentes</h4>
+
+          @if (inscripciones().length > 0) {
+              <ul class="list-group">
+              @for (i of inscripciones(); track i.idInscripcion) {
+                  <li class="list-group-item bg-transparent text-light border-warning rounded mb-1">
+                  {{ i.nombreUsuario }} {{ i.apellidosUsuario }}
+                  </li>
+              }
+              </ul>
+          } @else {
+              <p class="text-light">No hay asistentes inscritos.</p>
+          }
+          </div>
+        }
+
+        <!-- Botonera -->
+        <div class="d-flex justify-content-center mt-auto">
+          <app-curso-botonera [curso]="curso"></app-curso-botonera>
+        </div>
+
+      </div>
+    </div>
+  </div>
+}

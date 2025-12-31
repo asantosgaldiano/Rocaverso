@@ -1,0 +1,134 @@
+/* CONTENEDOR */
+.usuarios-container {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: #fff;
+    border-radius: 14px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+    font-family: 'Poppins', sans-serif;
+    color: #1d2b2f;
+}
+
+/* HEADER */
+.usuarios-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 0.8rem;
+}
+
+.usuarios-title {
+    font-size: 1.9rem;
+    font-weight: 700;
+    color: var(--verde-oscuro);
+}
+
+.usuarios-subtitle {
+    color: #607d7d;
+    margin-top: 0.2rem;
+    font-size: 0.95rem;
+}
+
+.usuarios-buttons {
+    display: flex;
+    gap: 0.8rem;
+}
+
+/* BOTÓN VOLVER */
+.btn-volver {
+    border: 1px solid var(--verde-principal);
+    border-radius: 8px;
+    padding: 0.55rem 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    background-color: transparent;
+    color: var(--verde-principal);
+    transition: 0.25s ease;
+}
+
+.btn-volver:hover {
+    background-color: var(--verde-principal);
+    color: white;
+}
+
+/* TABLA */
+.usuarios-table-wrapper {
+    overflow-x: auto;
+}
+
+.usuarios-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.usuarios-table thead {
+    background: var(--verde-claro);
+}
+
+.usuarios-table th {
+    padding: 0.8rem;
+    font-weight: 600;
+    color: var(--verde-oscuro);
+    border-bottom: 2px solid var(--verde-principal);
+}
+
+.usuarios-table td {
+    padding: 0.75rem;
+    border-bottom: 1px solid #e5e7eb;
+    font-size: 0.9rem;
+}
+
+.usuarios-table tr:hover {
+    background: rgba(46, 139, 139, 0.06);
+}
+
+/* ESTADOS */
+.estado-activo {
+  color: var(--verde-principal);
+  font-weight: 600;
+}
+
+.estado-inactivo {
+  color: #c0392b;
+  font-weight: 600;
+}
+
+/* ACCIONES */
+.acciones-wrapper {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.6rem;
+}
+
+.action-link {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.35rem 0.6rem;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: 0.25s ease;
+}
+
+.action-link.aceptar {
+    color: var(--verde-principal);
+}
+
+.action-link.cancelar {
+    color: #c0392b;
+}
+
+.action-link:hover {
+    background: rgba(0,0,0,0.06);
+}
+
+/* VACÍO */
+.usuarios-empty {
+    text-align: center;
+    margin-top: 2rem;
+    color: #607d7d;
+    font-size: 1.1rem;
+}

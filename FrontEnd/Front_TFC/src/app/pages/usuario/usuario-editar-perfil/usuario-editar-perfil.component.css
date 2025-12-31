@@ -1,0 +1,133 @@
+.perfil-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 2.5rem 1.5rem;
+    font-family: 'Poppins', sans-serif;
+    color: #1d2b2f;
+}
+
+.perfil-title {
+    font-size: 1.9rem;
+    font-weight: 700;
+    color: var(--verde-oscuro);
+    margin-bottom: 1.8rem;
+    text-align: center;
+}
+
+.perfil-loading {
+    text-align: center;
+}
+
+.spinner-border {
+    color: var(--verde-principal);
+    width: 2.6rem;
+    height: 2.6rem;
+}
+
+.perfil-loading p {
+    margin-top: 1rem;
+    color: var(--verde-oscuro);
+    font-weight: 500;
+}
+
+
+.perfil-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.4rem;
+}
+
+
+.form-group-custom {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group-custom label {
+    font-weight: 600;
+    margin-bottom: 0.35rem;
+    color: var(--verde-oscuro);
+}
+
+.form-group-custom input {
+    border: 1px solid #c9d4d4;
+    border-radius: 10px;
+    padding: 0.55rem 0.9rem;
+    font-size: 0.95rem;
+    transition: border-color 0.25s ease;
+    background: #fff;
+}
+
+.form-group-custom input:focus {
+    border-color: var(--verde-principal);
+    outline: none;
+}
+
+.password-wrapper {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.btn-toggle {
+    background: transparent;
+    border: 1px solid var(--verde-principal);
+    color: var(--verde-principal);
+    padding: 0.4rem 0.9rem;
+    border-radius: 8px;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    white-space: nowrap;
+}
+
+.btn-toggle:hover {
+    background: var(--verde-principal);
+    color: #fff;
+}
+
+
+.info-text {
+    font-size: 0.8rem;
+    color: #607d7d;
+    margin-top: 0.3rem;
+}
+
+.error-text {
+    font-size: 0.8rem;
+    color: #c0392b;
+    margin-top: 0.3rem;
+}
+
+
+.btn-save {
+    background: var(--verde-principal);
+    color: #fff;
+    font-weight: 600;
+    padding: 0.7rem 1.2rem;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: all 0.25s ease;
+}
+
+.btn-save:hover {
+    background: var(--verde-oscuro);
+}
+
+/* RESPONSIVE */
+@media (max-width: 600px) {
+    .perfil-container {
+        padding: 2rem 1rem;
+    }
+
+    .password-wrapper {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .btn-toggle {
+        width: 100%;
+    }
+}

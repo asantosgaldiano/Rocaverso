@@ -1,0 +1,18 @@
+<div class="user-card">
+  <h3>Vías Realizadas</h3>
+
+  <div class="list">
+    @if (vias().length === 0) {
+      <div class="empty">No tienes vías realizadas.</div>
+    } @else {
+      @for (via of vias(); track via.idViaRealizada) {
+        <div class="item">
+          <div class="info">
+            <strong>{{ via.tipo }}</strong>
+            <small>{{ via.dificultad }} — {{ via.fechaRealizacion | date:'dd-MM-yyyy' }}</small>
+          </div>
+        </div>
+      }
+    }
+  </div>
+</div>

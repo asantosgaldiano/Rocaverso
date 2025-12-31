@@ -1,0 +1,14 @@
+.hamburger {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.navbar-brand-custom {
+    color: #1d1d1d;
+    transition: color 0.3s ease;
+}
+
+.navbar-brand-custom:hover {
+    color: var(--dorado-acento);
+}

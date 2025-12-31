@@ -1,0 +1,56 @@
+<section class="via-edit-container">
+  <div class="via-card">
+
+    <div class="via-header">
+      <h2>Editar Vía</h2>
+      <p>Modifica los datos y guarda los cambios</p>
+    </div>
+
+    @if (error) {
+      <div class="error-alert">
+        {{ error }}
+      </div>
+    }
+
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+      <div class="campo">
+        <label>Tipo</label>
+        <select formControlName="tipo" class="input-field">
+          <option *ngFor="let t of tipos" [value]="t">{{ t }}</option>
+        </select>
+      </div>
+
+      <div class="campo">
+        <label>Dificultad</label>
+        <select formControlName="dificultad" class="input-field">
+          <option *ngFor="let d of dificultades" [value]="d">{{ d }}</option>
+        </select>
+      </div>
+
+      <div class="campo">
+        <label>Ubicación</label>
+        <select formControlName="ubicacion" class="input-field">
+          <option *ngFor="let u of ubicaciones" [value]="u">{{ u }}</option>
+        </select>
+      </div>
+
+      <div class="campo">
+        <label>Estado</label>
+        <input formControlName="estado" type="text" class="input-field" readonly />
+      </div>
+
+      <input formControlName="idRocodromo" type="hidden" />
+
+      <button type="submit" class="btn-submit" [disabled]="form.invalid">
+        Guardar Cambios
+      </button>
+
+      <button routerLink="/admin/vias" type="button" class="btn-volver">
+        Volver
+      </button>
+
+    </form>
+
+  </div>
+</section>

@@ -1,0 +1,86 @@
+<div class="perfil-container">
+
+  @if (loading()) {
+    <div class="perfil-loading">
+      <div class="spinner-border" role="status"></div>
+      <p>Cargando perfil...</p>
+    </div>
+  } @else {
+
+    <h2 class="perfil-title">Editar Perfil</h2>
+
+    <form [formGroup]="form" (ngSubmit)="onSubmit()" class="perfil-form">
+
+      <!-- Nombre -->
+      <div class="form-group-custom">
+        <label for="nombre">Nombre</label>
+        <input
+          id="nombre"
+          type="text"
+          formControlName="nombre"
+          placeholder="Tu nombre"
+        />
+      </div>
+
+      <!-- Apellidos -->
+      <div class="form-group-custom">
+        <label for="apellidos">Apellidos</label>
+        <input
+          id="apellidos"
+          type="text"
+          formControlName="apellidos"
+          placeholder="Tus apellidos"
+        />
+      </div>
+
+      <!-- Nueva contraseña -->
+      <div class="form-group-custom">
+        <label for="password">Nueva contraseña</label>
+
+        <div class="password-wrapper">
+          <input
+            [type]="mostrarPassword ? 'text' : 'password'"
+            id="password"
+            formControlName="password"
+            placeholder="••••••"
+          />
+
+          <button
+            type="button"
+            class="btn-toggle"
+            (click)="toggleMostrarPassword()"
+          >
+            {{ mostrarPassword ? 'Ocultar' : 'Mostrar' }}
+          </button>
+        </div>
+
+        <small class="info-text">Déjalo vacío si no deseas cambiarla.</small>
+      </div>
+
+      <!-- Repetir contraseña -->
+      <div
+        class="form-group-custom"
+        *ngIf="form.get('password')?.value"
+      >
+        <label for="repetirPassword">Repetir contraseña</label>
+        <input
+          [type]="mostrarPassword ? 'text' : 'password'"
+          id="repetirPassword"
+          formControlName="repetirPassword"
+          placeholder="••••••"
+        />
+
+        <small class="error-text" *ngIf="form.hasError('passwordMismatch')">
+          Las contraseñas no coinciden.
+        </small>
+      </div>
+
+      <!-- Botón -->
+      <button type="submit" class="btn-save">
+        Guardar cambios
+      </button>
+
+    </form>
+  }
+
+</div>

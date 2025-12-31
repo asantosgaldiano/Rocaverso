@@ -1,0 +1,172 @@
+<div class="vias-container">
+  <!-- SECCIÓN DE PODIOS -->
+  <section class="vias-podiums">
+
+    <!-- TOP 5 VÍAS -->
+    <div class="podium-card">
+      <div class="podium-header">
+        <i class="bi bi-trophy-fill"></i>
+        <h3>Top 5 Histórico Vías Más Realizadas</h3>
+      </div>
+      <div class="podium-body">
+        <!-- Uso signals: topVias() devuelve el valor actual -->
+        @if (topVias().length === 0) {
+          <p class="empty">No hay datos de vías más realizadas todavía.</p>
+        } @else {
+          <!-- @for: bucle reactivo -->
+          @for (via of topVias(); track via.idVia) {
+            <!-- track via.idVia: Angular usa idVia para detectar cambios -->
+            <div class="podium-item">
+              <div>
+                <strong>{{ via.idVia }} — {{ via.tipo }}</strong> / {{ via.dificultad }} — {{ via.ubicacion }}
+              </div>
+              <!-- totalRealizaciones viene desde el backend -->
+              <span class="podium-badge">{{ via.totalRealizaciones }}</span>
+            </div>
+          }
+        }
+      </div>
+    </div>
+
+    <!-- TOP 3 ESCALADORES -->
+    <div class="podium-card">
+      <div class="podium-header">
+        <i class="bi bi-person-fill"></i>
+        <h3>Top 3 Escaladores</h3>
+      </div>
+
+      <!-- Si no hay usuarios en el ranking -->
+      @if (topUsuarios().length === 0) {
+        <p class="empty">No hay datos de escaladores todavía.</p>
+
+      } @else {
+        <div class="podium-visual">
+
+          <!-- Segundo puesto: solo se renderiza si existe -->
+          @if (topUsuarios()[1]) {
+            <div class="podium-position second">
+              <i class="bi bi-2-square podium-icon"></i>
+              <div class="name">
+                <!-- split para mostrar solo el primer apellido -->
+                {{ topUsuarios()[1].nombre }} 
+                {{ topUsuarios()[1].apellidos.split(' ')[0] }}
+              </div>
+              <div class="score">{{ topUsuarios()[1].totalVias }}</div>
+            </div>
+          }
+
+          <!-- Primer puesto -->
+          @if (topUsuarios()[0]) {
+            <div class="podium-position first">
+              <i class="bi bi-trophy-fill podium-icon"></i>
+              <div class="name">
+                {{ topUsuarios()[0].nombre }} 
+                {{ topUsuarios()[0].apellidos.split(' ')[0] }}
+              </div>
+              <div class="score">{{ topUsuarios()[0].totalVias }}</div>
+            </div>
+          }
+
+          <!-- Tercer puesto -->
+          @if (topUsuarios()[2]) {
+            <div class="podium-position third">
+              <i class="bi bi-3-square podium-icon"></i>
+              <div class="name">
+                {{ topUsuarios()[2].nombre }} 
+                {{ topUsuarios()[2].apellidos.split(' ')[0] }}
+              </div>
+              <div class="score">{{ topUsuarios()[2].totalVias }}</div>
+            </div>
+          }
+        </div>
+      }
+    </div>
+
+  </section>
+
+  <!-- FILTROS DE VÍAS -->
+  <section class="vias-filtros">
+    <h2>Listado de Vías Activas</h2>
+
+    <!-- Evito que el formulario recargue la página -->
+    <form class="filtros-form" (submit)="$event.preventDefault()">
+
+      <div class="filtro">
+        <label>Tipo de Escalada</label>
+        
+        <!-- 
+          Cada vez que el usuario cambia la opción:
+          - Leo el valor seleccionado
+          - Lo guardo en el signal filtroTipo
+          Esto provoca que el efecto en el componente vuelva a cargar las vías filtradas.
+        -->
+        <select (change)="filtroTipo.set($any($event.target).value)" [value]="filtroTipo()">
+        <!-- Mantengo el select sincronizado con el valor actual del signal -->
+
+        <!-- 
+          Recorro la lista de tipos obtenida del backend.
+          'track t' mejora el renderizado porque usa el valor como clave única.
+        -->
+          @for (t of tipos(); track t) {
+            <!-- 'TODO' aparece como 'Todos' para que sea más entendible al usuario -->
+            <option [value]="t">{{ t === 'TODO' ? 'Todos' : t }}</option>
+          }
+        </select>
+      </div>
+
+      <div class="filtro">
+        <label>Dificultad</label>
+        <select (change)="filtroDificultad.set($any($event.target).value)" [value]="filtroDificultad()">
+          @for (d of dificultades(); track d) {
+            <option [value]="d">{{ d === 'TODO' ? 'Todas' : d }}</option>
+          }
+        </select>
+      </div>
+
+      <div class="filtro">
+        <label>Ubicación</label>
+        <select (change)="filtroUbicacion.set($any($event.target).value)" [value]="filtroUbicacion()">
+          @for (u of ubicaciones(); track u) {
+            <option [value]="u">{{ u === 'TODO' ? 'Todas' : u }}</option>
+          }
+        </select>
+      </div>
+
+      <button type="button" class="btn-reset" (click)="resetFiltros()">
+        <i class="bi bi-arrow-counterclockwise"></i> Reset filtros
+      </button>
+    </form>
+  </section>
+
+  <!-- LISTADO DE VÍAS -->
+  <section class="vias-list">
+
+    <!-- Si no hay vías filtradas -->
+    @if (vias().length === 0) {
+      <p class="empty">No hay vías disponibles.</p>
+
+    } @else {
+      @for (via of vias(); track via.idVia) {
+        <div class="via-item">
+          <div class="via-info">
+            <strong>{{ via.idVia }} — {{ via.tipo }}</strong> | {{ via.dificultad }} — {{ via.ubicacion }}
+          </div>
+
+          <div class="via-actions">
+            <!-- Compruebo si el usuario ya la tiene marcada -->
+            @if (isViaRealizada(via.idVia)) {
+              <button class="btn-outline btn-danger" (click)="borrarVia(getIdViaRealizada(via.idVia)!)">
+                <i class="bi bi-x-circle"></i> Desmarcar
+              </button>
+
+            } @else {
+              <button class="btn-outline btn-success" (click)="marcarVia(via.idVia)">
+                <i class="bi bi-check-circle"></i> Marcar
+              </button>
+            }
+          </div>
+        </div>
+      }
+    }
+  </section>
+</div>

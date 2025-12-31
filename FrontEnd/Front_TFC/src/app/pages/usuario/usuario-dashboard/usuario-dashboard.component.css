@@ -1,0 +1,117 @@
+
+.dashboard {
+    font-family: 'Poppins', sans-serif;
+    color: #1d2b2f;
+    min-height: 100vh;
+    max-width: 1500px;
+    margin: 0 auto;
+    padding: 3rem 2rem;
+    box-sizing: border-box;
+}
+
+
+.dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2.5rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.dashboard-header h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--verde-oscuro);
+    margin: 0;
+}
+
+.btn-calendar {
+    background-color: var(--verde-principal);
+    color: var(--blanco);
+    border: none;
+    border-radius: 10px;
+    padding: 0.7rem 1.6rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+
+.btn-calendar:hover {
+    background-color: var(--verde-oscuro);
+    transform: translateY(-1px);
+}
+
+.dashboard-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.dashboard-row {
+    display: flex;
+    gap: 2rem;
+    justify-content: space-between;
+    align-items: stretch;
+    flex-wrap: wrap;
+}
+
+.dashboard-card {
+    flex: 1 1 48%;
+    min-width: 48%;
+    display: flex;
+    min-height: 0;
+    background: rgba(46, 139, 139, 0.06);
+    border-radius: 14px;
+    padding: 1.2rem;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.06);
+    border-top: 4px solid var(--verde-principal);
+    transition: all 0.25s ease;
+    backdrop-filter: blur(2px);
+}
+
+/* Hover suave y elegante */
+.dashboard-card:hover {
+    /* transform: translateY(-4px); */
+    box-shadow: 0 6px 20px rgba(0,0,0,0.10);
+    background: rgba(46, 139, 139, 0.1);
+}
+
+.dashboard-card > * {
+    flex: 1;
+    min-height: 0;
+}
+
+/* RESPONSIVE */
+@media (max-width: 1099px) {
+    .dashboard {
+        padding: 2rem 1.5rem;
+    }
+
+    .dashboard-row {
+        flex-direction: column;
+        align-items: center;
+        gap: 1.8rem;
+    }
+
+    .dashboard-card {
+        width: 80%;
+        min-width: 80%;
+    }
+}
+
+@media (max-width: 768px) {
+    .dashboard {
+        padding: 1.5rem 1rem;
+    }
+
+    .dashboard-header h2 {
+        font-size: 1.6rem;
+    }
+
+    .dashboard-card {
+        width: 100%;
+        min-width: 100%;
+    }
+}

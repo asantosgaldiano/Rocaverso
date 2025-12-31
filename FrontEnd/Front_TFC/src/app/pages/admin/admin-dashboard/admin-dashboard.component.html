@@ -1,0 +1,69 @@
+<div class="admin-panel">
+
+  <header class="admin-header">
+
+    <div class="admin-header-text">
+      <h1 class="admin-title">¡Bienvenido, {{ nombreUsuario }}!</h1>
+      <p class="admin-subtitle">
+        Gestiona todos los aspectos del rocódromo desde un único panel.
+      </p>
+    </div>
+
+    <button class="btn-admin-calendar" routerLink="/admin/calendario">
+      <i class="bi bi-calendar-week"></i> Calendario de Actividades
+    </button>
+
+  </header>
+
+  <div class="admin-grid">
+
+    <a routerLink="/admin/cursos" class="admin-card">
+      <div class="card-header-icon">
+        <i class="bi bi-journal-bookmark-fill"></i>
+      </div>
+      <h2>Cursos</h2>
+      <p>Gestiona los cursos activos y su planificación.</p>
+    </a>
+
+    <a routerLink="/admin/eventos" class="admin-card">
+      <div class="card-header-icon">
+        <i class="bi bi-calendar-event-fill"></i>
+      </div>
+      <h2>Eventos</h2>
+      <p>Organiza y controla los eventos programados.</p>
+    </a>
+
+    <a routerLink="/admin/monitores" class="admin-card">
+      <div class="card-header-icon">
+        <i class="bi bi-person-badge-fill"></i>
+      </div>
+      <h2>Monitores</h2>
+      <p>Crear y gestionar cuentas de monitores.</p>
+    </a>
+
+    <a routerLink="/admin/vias" class="admin-card">
+      <div class="card-header-icon">
+        <i class="bi bi-signpost-split-fill"></i>
+      </div>
+      <h2>Vías</h2>
+      <p>Gestiona las vías de escalada disponibles.</p>
+    </a>
+
+    <a routerLink="/admin/usuarios" class="admin-card">
+      <div class="card-header-icon">
+        <i class="bi bi-people-fill"></i>
+      </div>
+      <h2>Usuarios</h2>
+      <p>Supervisa los usuarios registrados.</p>
+    </a>
+
+    <a routerLink="/admin/administradores" class="admin-card">
+      <div class="card-header-icon">
+        <i class="bi bi-shield-lock-fill"></i>
+      </div>
+      <h2>Administradores</h2>
+      <p>Crear y gestionar cuentas administrativas.</p>
+    </a>
+
+  </div>
+</div>

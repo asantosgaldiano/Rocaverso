@@ -1,0 +1,71 @@
+<div class="usuarios-container">
+
+  <!-- HEADER -->
+  <div class="usuarios-header">
+    <div>
+      <h2 class="usuarios-title">Gestión de Usuarios</h2>
+      <p class="usuarios-subtitle">Administra los usuarios del rocódromo</p>
+    </div>
+
+    <div class="usuarios-buttons">
+      <button class="btn-volver" (click)="volverAlPanel()">
+        <i class="bi bi-arrow-left"></i> Volver al panel
+      </button>
+    </div>
+  </div>
+
+  @if (usuarios.length > 0) {
+
+    <div class="usuarios-table-wrapper">
+      <table class="usuarios-table">
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Email</th>
+            <th>Rol</th>
+            <th>Estado</th>
+            <th class="text-right">Acciones</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          @for (u of usuarios; track u.email) {
+            <tr>
+              <td>{{ u.nombre }} {{ u.apellidos }}</td>
+              <td>{{ u.email }}</td>
+              <td>{{ u.rol || 'Desconocido' }}</td>
+
+              <td>
+                <span class="{{ u.enabled ? 'estado-activo' : 'estado-inactivo' }}">
+                  {{ u.enabled ? 'Activo' : 'Deshabilitado' }}
+                </span>
+              </td>
+
+              <td class="text-right">
+                <div class="acciones-wrapper">
+
+                  @if (u.enabled) {
+                    <button (click)="deshabilitar(u.email)" class="action-link cancelar">
+                      Deshabilitar
+                    </button>
+                  } @else {
+                    <button (click)="habilitar(u.email)" class="action-link aceptar">
+                      Habilitar
+                    </button>
+                  }
+
+                </div>
+              </td>
+
+            </tr>
+          }
+        </tbody>
+
+      </table>
+    </div>
+
+  } @else {
+    <p class="usuarios-empty">No hay usuarios registrados todavía.</p>
+  }
+
+</div>

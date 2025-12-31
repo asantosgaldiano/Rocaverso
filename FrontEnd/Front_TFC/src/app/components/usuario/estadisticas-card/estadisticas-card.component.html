@@ -1,0 +1,35 @@
+<div class="user-card">
+  <h3>Mis Estadísticas</h3>
+  <p class="subtitle">Resumen de tu actividad</p>
+
+  <div class="stats">
+
+    <!-- Total de vías realizadas (si no hay datos, muestra 0) -->
+    <div class="stat">
+      <span class="number">{{ estadisticas?.totalViasRealizadas ?? 0 }}</span>
+      <span class="label">Vías realizadas</span>
+    </div>
+
+    <!-- Nivel medio del usuario (si no existe, muestra '-') -->
+    <div class="stat">
+      <span class="number">{{ estadisticas?.nivelMedio || '-' }}</span>
+      <span class="label">Nivel medio</span>
+    </div>
+
+    <!-- Tipo de vía que más repite el usuario -->
+    <div class="stat">
+      <span class="number">
+        {{ estadisticas?.tipoMasFrecuente || '-' }}
+      </span>
+      <span class="label">Tipo más frecuente</span>
+    </div>
+
+  </div>
+
+  <!-- Mensaje motivacional -->
+  <p class="motivacion">
+    <i class="bi bi-triangle-fill icono-montana"></i>
+    Cada vía que completas te hace más fuerte. ¡Sigue escalando!
+  </p>
+
+</div>

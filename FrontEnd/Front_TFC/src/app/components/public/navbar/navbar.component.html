@@ -1,0 +1,92 @@
+<nav class="navbar shadow-none border-0">
+  <div class="container d-flex align-items-center justify-content-between py-3">
+    
+    <!-- LOGO + TÍTULO DEL SITIO -->
+    <div class="d-flex align-items-center gap-3">
+      <img src="/assets/icon/mountainscircle.png" alt="Logo" class="rounded-circle" style="width: 48px; height: 48px;" />
+      <a routerLink="/" class="fs-1 fw-bold text-decoration-none navbar-brand-custom hover-opacity">Rocaverso</a>
+    </div>
+
+    <!-- BOTÓN MENÚ MÓVIL (solo visible en pantallas pequeñas) -->
+    <button class="hamburger d-lg-none" (click)="toggleMenu()">
+      <!-- Icono hamburguesa -->
+      <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor"
+        class="bi bi-list" viewBox="0 0 16 16">
+        <path fill-rule="evenodd"
+          d="M2.5 12.5a.5.5 0 0 1 0-1h11a.5.5 0 0 1 0 1h-11zm0-5a.5.5 0 0 1 0-1h11a.5.5 0 0 1 0 1h-11zm0-5a.5.5 0 0 1 0-1h11a.5.5 0 0 1 0 1h-11z" />
+      </svg>
+    </button>
+
+    <!-- MENÚ PRINCIPAL -->
+      <!-- Oculto en móvil, visible en desktop
+      Menú móvil desplegado
+      Activa estilos show del CSS -->
+    <ul class="menu list-unstyled mb-0 fw-medium"
+        [ngClass]="{
+          'd-none d-lg-flex gap-4 align-items-center': !menuAbierto,
+          'd-flex flex-column mt-3 p-3': menuAbierto && screenIsSmall,
+          'show': menuAbierto
+        }">
+
+      <!-- MENÚ PARA VISITANTES (no autenticados) -->
+      @if (!auth.isAuthenticated()) {
+        <li><a routerLink="/actividades" class="text-decoration-none hover-opacity">Actividades</a></li>
+        <li><a routerLink="/rocodromo" class="text-decoration-none hover-opacity">Rocódromo</a></li>
+        <li><a routerLink="/login" class="text-decoration-none hover-opacity">Iniciar sesión</a></li>
+        <li><a routerLink="/register" class="text-decoration-none hover-opacity">Registrarse</a></li>
+      }
+
+      <!-- MENÚ USUARIO NORMAL -->
+      @if (auth.getRole() === 'USUARIO') {
+        <li><a routerLink="/usuario">Mi panel</a></li>
+        <li><a routerLink="/usuario/vias">Vías/Bloques</a></li>
+        <li><a routerLink="/usuario/editar">Editar perfil</a></li>
+
+        <!-- Enlaces públicos adicionales -->
+        <li><a routerLink="/actividades" class="text-decoration-none hover-opacity">Actividades</a></li>
+        <li><a routerLink="/rocodromo" class="text-decoration-none hover-opacity">Rocódromo</a></li>
+        
+        <!-- Botón cerrar sesión -->
+        <li>
+          <button
+            (click)="logout()"
+            class="text-danger border-0 bg-transparent fw-semibold cerrar-sesion-btn"
+            aria-label="Cerrar sesión"
+          >
+            Cerrar sesión
+          </button>
+        </li>
+      }
+
+      <!-- MENÚ MONITOR -->
+      @if (auth.getRole() === 'MONITOR') {
+        <li><a routerLink="/monitor">Mi panel</a></li>
+        <li><a routerLink="/monitor/editar">Editar perfil</a></li>
+        <li>
+          <button
+            (click)="logout()"
+            class="text-danger border-0 bg-transparent fw-semibold cerrar-sesion-btn"
+            aria-label="Cerrar sesión"
+          >
+            Cerrar sesión
+          </button>
+        </li>
+      }
+
+      <!-- MENÚ ADMINISTRADOR -->
+      @if (auth.getRole() === 'ADMON') {
+        <li><a routerLink="/admin">Mi panel</a></li>
+        <li><a routerLink="/admin/editar">Editar perfil</a></li>
+        <li>
+          <button
+            (click)="logout()"
+            class="text-danger border-0 bg-transparent fw-semibold cerrar-sesion-btn"
+            aria-label="Cerrar sesión"
+          >
+            Cerrar sesión
+          </button>
+        </li>
+      }
+    </ul>
+  </div>
+</nav>

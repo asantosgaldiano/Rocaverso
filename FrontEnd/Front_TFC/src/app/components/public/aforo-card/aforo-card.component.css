@@ -1,0 +1,71 @@
+
+/* --- Aforo Section --- */
+.aforo-section {
+    background-color: var(--blanco);
+    padding-top: 6rem; 
+    padding-bottom: 6rem;
+}
+
+/* Aforo card */
+.aforo-card {
+    background-color: var(--blanco);
+    padding: 4rem 5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch; 
+    gap: 3rem;
+}
+
+.aforo-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+    align-items: center;
+    text-align: center;
+}
+
+.aforo-title {
+    font-size: 3.2rem; 
+    letter-spacing: 1px;
+    color: var(--verde-principal);
+    font-family: 'Poppins', sans-serif;
+    text-transform: uppercase;
+}
+
+/* --- Círculo SVG --- */
+.aforo-circle {
+    transform: scale(1.25); 
+}
+
+.aforo-circle svg text {
+    font-size: 1.6rem; 
+    fill: #000;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+}
+
+/* --- Párrafo --- */
+.aforo-text {
+    font-size: 1.3rem; 
+    color: #1d2b2f;
+    line-height: 1.6;
+    max-width: 500px;
+}
+
+/* --- Imagen derecha --- */
+.aforo-image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+}
+
+.aforo-image img {
+    width: 480px;
+    height: auto;
+    object-fit: cover;
+    border-radius: 14px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}

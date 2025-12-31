@@ -1,0 +1,23 @@
+<div class="aforo-card d-flex align-items-center justify-content-between flex-wrap">
+  
+  <!-- Sección izquierda: textos y círculo -->
+  <div class="aforo-info text-center text-md-start">
+    <h2 class="aforo-title fw-bold">AFORO EN TIEMPO REAL</h2>
+    
+    <!-- 
+      Aquí se inserta el SVG generado dinámicamente.
+      [innerHTML] permite renderizar el código SVG devuelto por el método svg().
+    -->
+    <div class="aforo-circle my-4 mx-auto mx-md-0" [innerHTML]="svg()"></div>
+
+    <p class="aforo-text mt-3">
+      Actualmente, el aforo de nuestras instalaciones se encuentra al 
+      <strong>{{ aforo().porcentajeOcupado }}%</strong> de su capacidad total.
+    </p>
+  </div>
+
+  <!-- Sección derecha: imagen -->
+  <div class="aforo-image mt-4 mt-md-0">
+    <img src="assets/images/magnesio.jpg" alt="Aforo" class="img-fluid rounded shadow-sm" />
+  </div>
+</div>

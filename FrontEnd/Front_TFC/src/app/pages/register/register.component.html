@@ -1,0 +1,130 @@
+<section class="register-page d-flex align-items-center justify-content-center">
+  <div class="register-card">
+    <div class="text-center mb-4">
+      <h2 class="register-title">Rocódromo</h2>
+    </div>
+
+    <h3 class="register-subtitle text-center mb-3">Registro de Usuario</h3>
+
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <div class="mb-3">
+        <label for="email">Correo electrónico</label>
+        <input
+          id="email"
+          type="email"
+          formControlName="email"
+          placeholder="nombre@ejemplo.com"
+          required
+        />
+        <div
+          *ngIf="
+            form.get('email')?.touched &&
+            !form.get('email')?.hasError('emailEnUso') &&
+            (form.get('email')?.hasError('required') ||
+            form.get('email')?.hasError('email'))
+          "
+          class="register-error-text"
+        >
+          Email inválido.
+        </div>
+        @if (form.get('email')?.hasError('emailEnUso') && form.get('email')?.touched) {
+          <small class="login-small-error">
+            Este correo ya está registrado.
+          </small>
+        }
+      </div>
+
+      <div class="mb-3">
+        <label for="nombre">Nombre</label>
+        <input
+          id="nombre"
+          type="text"
+          formControlName="nombre"
+          placeholder="Tu nombre"
+          required
+        />
+        <div *ngIf="form.controls['nombre'].invalid && form.controls['nombre'].touched" class="register-error-text">
+          El nombre es obligatorio.
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label for="apellidos">Apellidos</label>
+        <input
+          id="apellidos"
+          type="text"
+          formControlName="apellidos"
+          placeholder="Tus apellidos"
+          required
+        />
+        <div *ngIf="form.controls['apellidos'].invalid && form.controls['apellidos'].touched" class="register-error-text">
+          Los apellidos son obligatorios.
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label for="password">Contraseña</label>
+        <input
+          id="password"
+          [type]="mostrarPassword ? 'text' : 'password'"
+          formControlName="password"
+          placeholder="••••••••"
+          required
+        />
+        <div
+          *ngIf="form.controls['password'].invalid && form.controls['password'].touched"
+          class="register-error-text"
+        >
+          La contraseña debe tener al menos 6 caracteres.
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label for="repetirPassword">Repetir contraseña</label>
+        <input
+          id="repetirPassword"
+          [type]="mostrarPassword ? 'text' : 'password'"
+          formControlName="repetirPassword"
+          placeholder="Repite tu contraseña"
+          required
+        />
+        <div
+          *ngIf="form.errors?.['passwordMismatch'] && form.controls['repetirPassword'].touched"
+          class="register-error-text"
+        >
+          Las contraseñas no coinciden.
+        </div>
+        <button
+          type="button"
+          class="btn-toggle-password small"
+          (click)="toggleMostrarPassword()"
+        >
+        {{ mostrarPassword ? 'Ocultar contraseñas' : 'Mostrar contraseñas' }}
+        </button>
+      </div>
+
+
+
+      <div *ngIf="error" class="register-error-box">
+        {{ error }}
+      </div>
+
+      <button
+        type="submit"
+        class="register-btn"
+        [disabled]="form.invalid || loading || form.get('email')?.hasError('emailEnUso')"
+      >
+        @if (!loading) {
+          <span>Registrarse</span>
+        } @else {
+          <span>Cargando...</span>
+        }
+      </button>
+
+      <div class="register-links">
+        <a routerLink="/" class="register-back">Volver</a>
+        <a routerLink="/login" class="register-link">¿Ya tienes cuenta? Inicia sesión</a>
+      </div>
+    </form>
+  </div>
+</section>

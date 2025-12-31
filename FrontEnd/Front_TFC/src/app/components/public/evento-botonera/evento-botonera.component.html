@@ -1,0 +1,38 @@
+<div class="evento-botonera">
+
+  <a routerLink="/" class="btn btn-outline-primary btn">
+    Volver Inicio
+  </a>
+
+  <!-- Botones para ADMIN -->
+  @if (auth.getRole() === 'ADMON') {
+    <button (click)="editar()" class="btn btn-outline-warning btn">
+      Editar
+    </button>
+    <button (click)="eliminar()" class="btn btn-outline-danger btn">
+      Eliminar
+    </button>
+    <a routerLink="/admin/eventos" class="btn btn-outline-primary btn">
+      Eventos
+    </a>
+  }
+
+  <!-- Botón para USUARIO -->
+  @if (auth.getRole() === 'USUARIO') {
+    <button 
+      (click)="reservar()" 
+      class="btn btn-success btn"
+    >
+      Reservar
+    </button>
+    <button 
+      (click)="cancelarReserva()" 
+      class="btn btn-outline-danger btn"
+    >
+      Cancelar Reserva
+    </button>
+    <button class="btn btn-outline-primary btn" (click)="volverAlPanel()">
+      <i class="bi bi-arrow-left"></i> Volver a mi panel
+    </button>
+  }
+</div>

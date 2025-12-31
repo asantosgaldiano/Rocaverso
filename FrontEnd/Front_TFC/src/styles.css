@@ -1,0 +1,283 @@
+/* Fuente global */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--blanco);
+    color: #1d2b2f;
+}
+
+/* Paleta personalizada */
+:root {
+    --verde-principal: #2e8b8b;
+    --verde-oscuro: #246d6d;
+    --verde-claro: #b2d8d8;
+    --dorado-acento: #d4af37;
+    --azul-suave: #5fa9a9;
+    --blanco:  #f8faf9;
+}
+
+/* Navbar */
+.navbar {
+    background-color: var(--verde-principal) !important;
+
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.20);
+    position: relative;
+    z-index: 50;
+}
+
+.navbar::after {
+    content: "";
+    position: absolute;
+    bottom: -20px;
+    left: 0;
+    width: 100%;
+    height: 20px;
+
+    /* Degradado sutil */
+    background: linear-gradient(
+        rgba(0, 0, 0, 0.18),
+        rgba(0, 0, 0, 0)
+    );
+    pointer-events: none;
+}
+
+.navbar a {
+    text-decoration: none;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+    color: var(--blanco);
+    transition: color 0.3s ease; /* efecto suave al pasar el ratón */
+}
+
+.navbar a:hover {
+    color: var(--dorado-acento);
+    text-decoration: none;
+}
+
+.hover-opacity:hover {
+    opacity: 0.8; /* efecto de atenuación */
+}
+
+/* Botón cerrar sesión */
+.cerrar-sesion-btn {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: color 0.3s ease;
+    padding: 0;
+    color: #dc3545;
+    background: transparent;
+    border: none;
+}
+
+.cerrar-sesion-btn:hover,
+.cerrar-sesion-btn:focus {
+    color: var(--dorado-acento) !important;
+    outline: none;
+    text-decoration: none;
+}
+
+/* Hamburger */
+.hamburger svg {
+    color:var(--blanco) !important;
+    transition: color 0.3s ease;
+}
+
+.hamburger:hover svg {
+  color: var(--dorado-acento);
+}
+
+/* Listas Eventos y Cursos */
+#eventos,
+#cursos,
+#aforo {
+    background-color: var(--blanco);
+}
+
+.lista-section {
+    /* background-color: var(--blanco); */
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: none;
+    border: none;
+}
+
+.list-title {
+    font-size: 3.2rem; 
+    letter-spacing: 1px;
+    color: var(--verde-principal);
+    font-family: 'Poppins', sans-serif;
+    text-transform: uppercase;
+}
+
+
+/* Cards Eventos y Cursos */
+.card-base {
+    background-color: rgba(255, 255, 255, 0.9); /* fondo semitransparente */
+    border-radius: 12px;
+    overflow: hidden; /* evita que el contenido sobresalga */
+    transition: transform 0.2s ease, box-shadow 0.2s ease; /* animación suave */
+    border: none;
+    height: 100%;
+}
+
+.card-base:hover {
+    transform: translateY(-5px); /* efecto de elevación */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.card-base .card-title {
+    font-size: 1.25rem;
+    color: var(--verde-principal); /* título con color corporativo */
+}
+
+.card-base .badge {
+    font-size: 0.9rem;
+    padding: 0.4em 0.6em;
+}
+
+.card-base .btn-outline-primary,
+.card-base .btn-outline-verde {
+    border-color: var(--verde-principal);
+    color: var(--verde-principal);
+    transition: background-color 0.2s, color 0.2s; /* animación botón */
+}
+
+.card-base .btn-outline-primary:hover,
+.card-base .btn-outline-verde:hover {
+    background-color: var(--verde-principal);
+    color: var(--blanco); /* invierte colores en hover */
+}
+
+.evento-img {
+    height: 200px;
+    object-fit: cover; /* recorta manteniendo proporciones */
+}
+
+.bg-verde-principal {
+    background-color: var(--verde-principal) !important;
+    color: var(--blanco) !important;
+}
+
+
+/* Footer */
+footer {
+    background: linear-gradient(
+        to top,
+        var(--verde-oscuro) 94%,
+        rgba(0, 0, 0, 0.15)
+    );
+    padding-top: 2rem;
+    box-shadow: 0 -1px 4px rgba(0, 0, 0, 0.12);
+    padding: 2.5rem 0;
+}
+
+
+footer h5,
+footer p,
+footer a,
+footer li {
+    color: var(--blanco) !important; /* texto claro */
+}
+footer a:hover {
+    color: var(--dorado-acento) !important; /* enlaces destacados */
+}
+footer .text-warning {
+    color: var(--dorado-acento) !important;
+}
+
+.icon-dorado {
+    color: var(--dorado-acento) !important;
+}
+
+.icon-verde {
+    color: var(--verde-claro) !important;
+}
+
+.icon-azul {
+    color: var(--azul-suave) !important;
+}
+
+.icon-blanco {
+    color: var(--blanco) !important;
+}
+
+/* Menú móvil - estado cerrado (oculto) y abierto (visible) */
+.menu {
+    transition: all 0.3s ease; /* animación abrir/cerrar */
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+@media (max-width: 992px) {
+  
+  .list-title,
+  .aforo-title,
+  .jumbotron-custom h1 {
+      font-size: 2.6rem; /* ajusta tamaño en tablets */
+  }
+  .aforo-circle {
+      transform: scale(1.1); /* círculo más grande en pantallas pequeñas */
+  }
+  .aforo-text {
+      font-size: 1.2rem;
+  }
+  .aforo-image img {
+      width: 100%;
+      max-width: 400px; /* evita imágenes enormes */
+  }
+}
+
+/* Media query para móvil 991.98px (Bootstrap breakpoint “lg”)*/
+@media (max-width: 991.98px) {
+
+  .menu.show {
+    display: flex !important;
+    flex-direction: column;
+    position: absolute;
+    top: 70px; /* justo debajo del navbar */
+    right: 1rem;
+    background: var(--blanco);
+    border-radius: 8px;
+    padding: 1rem;
+    border: 1px solid #ddd; /* borde sutil */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* sombra suave */
+    z-index: 999; /* encima de otros elementos */
+    width: 200px;
+  }
+
+  .menu.show a {
+    color: var(--verde-principal) !important;
+    padding: 0.5rem 0;
+    transition: color 0.3s ease;
+  }
+
+  .menu.show a:hover {
+    color: var(--dorado-acento) !important;
+  }
+
+  .aforo-info {
+    align-items: flex-start;
+    text-align: left; /* texto alineado correctamente */
+  }
+}
+
+/* Media query para escritorio */
+@media (min-width: 769px) {
+  .menu {
+    display: flex !important;
+    gap: 1.5rem; /* separa enlaces del menú */
+    align-items: center;
+  }
+
+  .menu a {
+    color: white;
+    transition: color 0.3s ease;
+  }
+
+  .menu a:hover {
+    color: var(--dorado-acento); /* efecto hover escritorio */
+  }
+}

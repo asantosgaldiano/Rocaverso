@@ -1,0 +1,182 @@
+.eventos-container {
+    max-width: 1500px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: #fff;
+    border-radius: 14px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+    font-family: 'Poppins', sans-serif;
+    color: #1d2b2f;
+}
+
+/* HEADER */
+.cursos-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 0.8rem;
+}
+
+.cursos-title {
+    font-size: 1.9rem;
+    font-weight: 700;
+    color: var(--verde-oscuro);
+}
+
+.cursos-subtitle {
+    color: #607d7d;
+    margin-top: 0.2rem;
+    font-size: 0.95rem;
+}
+
+.cursos-buttons {
+    display: flex;
+    gap: 0.8rem;
+}
+
+/* BOTONES */
+.btn-primario,
+.btn-volver {
+    border: none;
+    border-radius: 8px;
+    padding: 0.55rem 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    transition: 0.25s ease;
+}
+
+.btn-primario {
+    background-color: var(--verde-principal);
+    color: white;
+    text-decoration: none;
+}
+
+.btn-primario:hover {
+    background-color: var(--verde-oscuro);
+}
+
+.btn-volver {
+    background-color: transparent;
+    border: 1px solid var(--verde-principal);
+    color: var(--verde-principal);
+}
+
+.btn-volver:hover {
+    background-color: var(--verde-principal);
+    color: white;
+}
+
+/* TABLA */
+.cursos-table-wrapper {
+    overflow-x: auto;
+}
+
+.cursos-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.cursos-table thead {
+    background: var(--verde-claro);
+}
+
+.cursos-table th {
+    padding: 0.8rem;
+    font-weight: 600;
+    color: var(--verde-oscuro);
+    border-bottom: 2px solid var(--verde-principal);
+}
+
+.cursos-table td {
+    padding: 0.75rem;
+    border-bottom: 1px solid #e5e7eb;
+    font-size: 0.9rem;
+}
+
+.cursos-table tr:hover {
+    background: rgba(46, 139, 139, 0.06);
+}
+
+.text-right {
+    text-align: right;
+}
+
+/* ESTADOS */
+.estado {
+    font-weight: 600;
+}
+
+.estado.verde {
+    color: var(--verde-principal);
+}
+
+.estado.azul {
+    color: var(--azul-suave);
+}
+
+.estado.rojo {
+    color: #c0392b;
+}
+
+/* MINIMO ASISTENCIA */
+.minimo {
+    font-weight: 600;
+}
+
+.minimo.verde {
+    color: #1b7a4e;
+}
+
+.minimo.rojo {
+    color: #b23434;
+}
+
+/* ACCIONES */
+.acciones-wrapper {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.6rem;
+}
+
+.action-link {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.35rem 0.6rem;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: 0.25s ease;
+}
+
+.action-link.ver {
+    color: var(--azul-suave);
+}
+
+.action-link.aceptar {
+    color: var(--verde-principal);
+}
+
+.action-link.terminar {
+    color: #d4af37;
+}
+
+.action-link.cancelar {
+    color: #c0392b;
+}
+
+.action-link:hover {
+    background: rgba(0,0,0,0.06);
+}
+
+/* VACÍO */
+.cursos-empty {
+    text-align: center;
+    margin-top: 2rem;
+    color: #607d7d;
+    font-size: 1.1rem;
+}

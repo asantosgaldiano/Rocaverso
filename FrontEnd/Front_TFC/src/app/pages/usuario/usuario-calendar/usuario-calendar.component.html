@@ -1,0 +1,27 @@
+<div class="calendar-container">
+  <header class="calendar-header">
+    <h2>Mi Calendario</h2>
+
+    <div class="calendar-actions">
+      <button class="btn-volver" (click)="volverAlPanel()">
+        <i class="bi bi-arrow-left"></i> Volver al panel
+      </button>
+    </div>
+  </header>
+
+  @if (calendarOptions()) {
+    <div class="calendar-toolbar">
+      <button class="btn-vista" (click)="cambiarVista('dayGridMonth')">Mes</button>
+      <button class="btn-vista" (click)="cambiarVista('timeGridWeek')">Semana</button>
+      <button class="btn-vista" (click)="cambiarVista('timeGridDay')">Día</button>
+    </div>
+
+    <div class="calendar-wrapper">
+      <full-calendar #fullCalendar [options]="calendarOptions()"></full-calendar>
+    </div>
+  } @else {
+    <div class="calendar-loading">
+      <p>Cargando calendario...</p>
+    </div>
+  }
+</div>

@@ -1,0 +1,19 @@
+<div class="user-card">
+  <h3>Mis Inscripciones</h3>
+
+  <div class="list">
+    @if (inscripciones().length === 0) {
+      <div class="empty">No tienes inscripciones.</div>
+    } @else {
+      @for (inscripcion of inscripciones(); track inscripcion.idInscripcion) {
+        <div class="item">
+          <div class="info">
+            <strong>{{ inscripcion.nombreCurso }}</strong>
+            <small>{{ inscripcion.fechaInicioCurso | date:'dd-MM-yyyy' }} – {{ inscripcion.fechaFinCurso | date:'dd-MM-yyyy' }}</small>
+          </div>
+          <button (click)="verDetalle(inscripcion.idCurso)">Ver detalle</button>
+        </div>
+      }
+    }
+  </div>
+</div>

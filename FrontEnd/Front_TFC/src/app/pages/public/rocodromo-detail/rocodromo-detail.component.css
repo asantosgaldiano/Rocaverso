@@ -1,0 +1,335 @@
+
+/* Sección Superior */
+.instalaciones-section {
+    width: 100%;
+    color: var(--blanco);
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Hero inicial */
+.instalaciones-hero {
+    background-image: url('/assets/images/rocodromofondo.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: rgba(0, 0, 0, 0.6);
+    background-blend-mode: multiply;
+
+    width: 100%;
+    min-height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 3rem 1.5rem;
+}
+
+.instalaciones-contenido {
+    max-width: 800px;
+}
+
+.instalaciones-hero h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: var(--blanco);
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5);
+    margin-bottom: 1rem;
+}
+
+.hero-subtitle {
+    font-size: 1.25rem;
+    color: #e6f4f4;
+    margin-bottom: 2rem;
+    line-height: 1.5;
+}
+
+.hero-btn {
+    display: inline-block;
+    background-color: transparent;
+    border: 2px solid var(--blanco);
+    color: var(--blanco);
+    padding: 0.75rem 2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.hero-btn:hover {
+    background-color: var(--verde-principal);
+    color: var(--blanco);
+    border-color: var(--verde-principal);
+    transform: translateY(-2px);
+}
+
+/* Bloque debajo del hero */
+.rocodromo-info {
+    background-color: var(--blanco);
+    color: #1d2b2f;
+    padding: 5rem 2rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.rocodromo-info h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--verde-principal);
+    margin-bottom: 1rem;
+}
+
+.rocodromo-info .subtitle {
+    font-size: 1.2rem;
+    color: #4b6464;
+    font-weight: 500;
+    margin-bottom: 2rem;
+}
+
+.rocodromo-info .content {
+    max-width: 900px;
+}
+
+.rocodromo-info .content p {
+    font-size: 1.05rem;
+    font-weight: 400;
+    line-height: 1.7;
+    color: #2f4f4f;
+    margin-bottom: 1rem;
+}
+
+/* Section ZONAS E INSTALACIONES */
+.zonas-section {
+    background: linear-gradient(135deg, var(--verde-principal), var(--verde-oscuro));
+    color: var(--blanco);
+    font-family: 'Poppins', sans-serif;
+    padding: 4rem 2rem;
+}
+
+.container-zonas {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.zonas-title {
+    text-align: center;
+    font-size: 2.4rem;
+    font-weight: 700;
+    color: var(--blanco);
+    margin-bottom: 0.5rem;
+}
+
+.zonas-subtitle {
+    text-align: center;
+    font-size: 1.1rem;
+    color: var(--verde-claro);
+    margin-bottom: 2.5rem;
+    line-height: 1.6;
+}
+
+/* BLOQUES */
+.zona-item {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    margin-bottom: 2.5rem;
+}
+
+.zona-item.reverse {
+    flex-direction: row-reverse;
+}
+
+.zona-item img {
+    width: 45%;
+    border-radius: 12px;
+    object-fit: cover;
+    height: 300px;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+}
+
+.zona-text {
+    width: 55%;
+    text-align: left;
+}
+
+.zona-text h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--blanco);
+    margin-bottom: 0.6rem;
+}
+
+.zona-text p {
+    font-size: 1rem;
+    color: #f0f8f8;
+    line-height: 1.6;
+}
+
+/* TARIFAS Y BONOS */
+.tarifas-section {
+    background-color: var(--blanco);
+    color: #1d2b2f;
+    font-family: 'Poppins', sans-serif;
+    padding: 4rem 2rem 5rem;
+    text-align: center;
+}
+
+.container-tarifas {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.tarifas-title {
+    font-size: 2.4rem;
+    font-weight: 700;
+    color: var(--verde-principal);
+    margin-bottom: 0.5rem;
+}
+
+.tarifas-subtitle {
+    font-size: 1.1rem;
+    color: #4b6464;
+    margin-bottom: 2.5rem;
+    line-height: 1.6;
+}
+
+/* TABLA */
+.tarifas-table {
+    overflow-x: auto;
+    background-color: #ffffff;
+    border-radius: 12px;
+    padding: 0;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+    border: 1px solid rgba(46, 139, 139, 0.1);
+}
+
+.tarifas-table table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.tarifas-table th,
+.tarifas-table td {
+    padding: 1rem 1.2rem;
+    text-align: left;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.tarifas-table thead {
+    background-color: var(--verde-principal);
+    color: var(--blanco);
+}
+
+.tarifas-table th {
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+}
+
+.tarifas-table tbody tr:hover {
+    background-color: rgba(178, 216, 216, 0.2);
+    transition: background 0.3s ease;
+}
+
+.tarifas-table td:first-child {
+    color: #2f4f4f;
+    font-weight: 500;
+}
+
+.tarifas-table td:last-child {
+    font-weight: 600;
+    color: var(--verde-principal);
+    text-align: right;
+}
+
+/* Nota pie de tabla */
+.tarifas-nota {
+    font-size: 0.9rem;
+    font-style: italic;
+    color: #4b6464;
+    margin-top: 1.5rem;
+}
+
+
+
+/* Responsive */
+@media (max-width: 992px) {
+  .instalaciones-hero h1 {
+    font-size: 2.5rem;
+  }
+
+  .rocodromo-info h2 {
+    font-size: 2rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1.1rem;
+  }
+
+  .rocodromo-info .content p {
+    font-size: 1rem;
+  }
+
+  .zona-item {
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .zona-item img {
+    height: 250px;
+  }
+
+  .zona-text h3 {
+    font-size: 1.4rem;
+  }
+
+  .zona-text p {
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .instalaciones-hero {
+    min-height: 70vh;
+    padding: 2.5rem 1rem;
+  }
+
+  .hero-btn {
+    font-size: 0.95rem;
+    padding: 0.6rem 1.5rem;
+  }
+
+  .rocodromo-info {
+    padding: 3rem 1rem;
+  }
+
+  .zona-item,
+  .zona-item.reverse {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .zona-item img,
+  .zona-text {
+    width: 100%;
+  }
+
+  .zona-item img {
+    height: 220px;
+  }
+
+  .zona-text {
+    padding-top: 1rem;
+  }
+
+  .zona-text h3 {
+    font-size: 1.3rem;
+  }
+
+  .zona-text p {
+    font-size: 0.9rem;
+  }
+}

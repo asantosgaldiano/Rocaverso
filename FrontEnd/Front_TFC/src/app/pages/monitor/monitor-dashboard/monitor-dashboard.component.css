@@ -1,0 +1,155 @@
+
+.monitor-dashboard {
+    font-family: 'Poppins', sans-serif;
+    color: #1d2b2f;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 3rem 2rem;
+}
+
+
+.monitor-header {
+    margin-bottom: 2.5rem;
+}
+
+.monitor-header h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--verde-oscuro);
+    margin-bottom: 0.5rem;
+}
+
+.monitor-header p {
+    font-size: 1.1rem;
+    color: #607d7d;
+    margin-bottom: 1.5rem;
+}
+
+.btn-calendar {
+    background-color: var(--verde-principal);
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    padding: 0.7rem 1.6rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-calendar:hover {
+    background-color: var(--verde-oscuro);
+    transform: translateY(-2px);
+}
+
+.error-box {
+    background: rgba(192, 57, 43, 0.1);
+    border-left: 4px solid #c0392b;
+    color: #c0392b;
+    padding: 1rem 1.2rem;
+    border-radius: 8px;
+    margin-top: 1rem;
+    font-size: 0.95rem;
+    font-weight: 500;
+}
+
+.table-container {
+    background: #fff;
+    border-radius: 14px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+    overflow-x: auto;
+    padding: 1.5rem;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.95rem;
+}
+
+thead {
+    background: var(--verde-principal);
+    color: #fff;
+}
+
+th {
+    padding: 0.9rem;
+    text-align: center;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+td {
+    padding: 0.8rem;
+    border-bottom: 1px solid #eaeaea;
+    vertical-align: middle;
+    text-align: center;
+}
+
+tr:hover {
+    background-color: rgba(46, 139, 139, 0.05);
+}
+
+
+.text-success {
+    color: #2e8b57 !important;
+}
+
+.text-warning {
+    color: #c5a100 !important;
+}
+
+.text-danger {
+    color: #c0392b !important;
+}
+
+
+.btn-outline {
+    border: 1px solid var(--verde-principal);
+    color: var(--verde-principal);
+    background: transparent;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    padding: 0.4rem 0.9rem;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+.btn-outline:hover {
+    background: var(--verde-principal);
+    color: #fff;
+}
+
+
+.empty {
+    text-align: center;
+    color: #9aa7a7;
+    font-style: italic;
+    padding: 1rem 0;
+    margin-top: 2rem;
+}
+
+/* RESPONSIVE */
+@media (max-width: 992px) {
+    .monitor-dashboard {
+        padding: 2rem 1rem;
+    }
+
+    .monitor-header h2 {
+        font-size: 1.6rem;
+    }
+
+    .table-container {
+        padding: 1rem;
+    }
+
+    th, td {
+        padding: 0.6rem;
+        font-size: 0.85rem;
+    }
+
+    .btn-outline {
+        padding: 0.3rem 0.7rem;
+        font-size: 0.8rem;
+    }
+}

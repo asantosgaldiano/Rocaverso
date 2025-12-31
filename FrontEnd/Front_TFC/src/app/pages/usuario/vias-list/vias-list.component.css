@@ -1,0 +1,388 @@
+.vias-container {
+    font-family: 'Poppins', sans-serif;
+    color: #1d2b2f;
+    max-width: 1500px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem;
+}
+
+/* PODIOS */
+.vias-podiums {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    margin-bottom: 1.8rem;
+}
+
+.podium-card {
+    flex: 1 1 48%;
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    border-top: 4px solid var(--verde-principal);
+    border-radius: 10px;
+    padding: 0.9rem 1rem 1.1rem;
+}
+
+.podium-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.podium-header i {
+    font-size: 1.1rem;
+    color: var(--verde-principal);
+}
+
+.podium-header h3 {
+    color: var(--verde-oscuro);
+    font-weight: 600;
+    font-size: 1rem;
+    margin: 0;
+}
+
+.podium-body {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+}
+
+.podium-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.4rem 0.6rem;
+    border-bottom: 1px solid #eaeaea;
+    font-size: 0.85rem;
+}
+
+.podium-item:last-child {
+    border-bottom: none;
+}
+
+.podium-badge {
+    background-color: var(--dorado-acento);
+    color: white;
+    font-weight: 600;
+    border-radius: 14px;
+    padding: 0.2rem 0.5rem;
+    min-width: 32px;
+    text-align: center;
+    font-size: 0.8rem;
+}
+
+.empty {
+    text-align: center;
+    color: #8aa3a3;
+    font-style: italic;
+    padding: 0.4rem 0;
+    font-size: 0.85rem;
+}
+
+/* PODIO VISUAL (TOP 3 ESCALADORES) */
+.podium-visual {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 2rem;
+    margin-top: 1rem;
+    height: 240px;
+    padding-top: 0.5rem;
+}
+
+.podium-position {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--verde-claro);
+    border-radius: 10px 10px 0 0;
+    width: 130px;
+    padding: 0.5rem;
+    position: relative;
+    transition: transform 0.25s ease;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.05);
+}
+
+.podium-position:hover {
+    transform: translateY(-4px);
+}
+
+/* Icono arriba */
+.podium-icon {
+    font-size: 2.2rem;
+    color: var(--verde-oscuro);
+    margin-bottom: 0.3rem;
+}
+
+.podium-position .name {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #1d2b2f;
+    text-align: center;
+    line-height: 1.1rem;
+    white-space: normal;
+    margin-bottom: 0.4rem;
+}
+
+.podium-position .score {
+    background: var(--verde-principal);
+    color: #fff;
+    font-size: 0.85rem;
+    font-weight: 600;
+    border-radius: 0 0 8px 8px;
+    width: 100%;
+    text-align: center;
+    padding: 0.25rem 0;
+}
+
+/* Tamaños según posición */
+.podium-position.first {
+    height: 190px;
+    background: var(--verde-principal);
+    color: #fff;
+}
+
+.podium-position.first .podium-icon {
+    color: var(--dorado-acento);
+}
+
+.podium-position.second {
+    height: 160px;
+    background: #d7e9e5;
+}
+
+.podium-position.third {
+    height: 140px;
+    background: #e9f2ef;
+}
+
+
+/* FILTROS */
+.vias-filtros {
+    margin-bottom: 1.8rem;
+}
+
+.vias-filtros h2 {
+    text-align: center;
+    color: var(--verde-oscuro);
+    margin-bottom: 1rem;
+    font-weight: 600;
+    font-size: 1.3rem;
+}
+
+.filtros-form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    align-items: flex-end;
+    justify-content: space-between;
+}
+
+.filtro {
+    flex: 1 1 30%;
+    display: flex;
+    flex-direction: column;
+}
+
+.filtro label {
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+    color: var(--verde-oscuro);
+    font-size: 0.85rem;
+}
+
+.filtro select {
+    padding: 0.3rem 0.5rem;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 0.85rem;
+    background: #fff;
+    color: #1d2b2f;
+    transition: border 0.2s ease;
+}
+
+.filtro select:focus {
+    border-color: var(--verde-principal);
+    outline: none;
+}
+
+.btn-reset {
+    background: transparent;
+    border: 1px solid var(--verde-principal);
+    color: var(--verde-principal);
+    border-radius: 6px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    padding: 0.3rem 0.8rem;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    align-self: center;
+}
+
+.btn-reset i {
+    margin-right: 0.3rem;
+    font-size: 0.9rem;
+}
+
+.btn-reset:hover {
+    background: var(--verde-principal);
+    color: #fff;
+}
+
+/* ==== LISTADO ==== */
+.vias-list {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    background: #fff;
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.vias-list::-webkit-scrollbar {
+    width: 5px;
+}
+
+.vias-list::-webkit-scrollbar-thumb {
+    background-color: rgba(46, 139, 139, 0.3);
+    border-radius: 3px;
+}
+
+.via-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.55rem 1rem;
+    border-bottom: 1px solid #eaeaea;
+    transition: background 0.2s ease;
+}
+
+.via-item:last-child {
+    border-bottom: none;
+}
+
+.via-item:hover {
+    background-color: rgba(46, 139, 139, 0.05);
+}
+
+.via-info {
+    font-size: 0.9rem;
+    color: #1d2b2f;
+    flex: 1;
+}
+
+.via-actions {
+    display: flex;
+    gap: 0.4rem;
+}
+
+/* BOTONES */
+.btn-outline {
+    border: 1px solid;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    padding: 0.25rem 0.7rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    background: transparent;
+    white-space: nowrap;
+}
+
+.btn-outline i {
+    margin-right: 0.3rem;
+    vertical-align: middle;
+    font-size: 0.85rem;
+}
+
+.btn-success {
+    border-color: var(--verde-principal);
+    color: var(--verde-principal);
+}
+
+.btn-success:hover {
+    background-color: var(--verde-principal);
+    color: #fff;
+}
+
+.btn-danger {
+    border-color: #c0392b;
+    color: #c0392b;
+}
+
+.btn-danger:hover {
+    background-color: #c0392b;
+    color: #fff;
+}
+
+/* RESPONSIVE */
+@media (max-width: 992px) {
+    .vias-podiums {
+        flex-direction: column;
+    }
+
+    .filtros-form {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.8rem;
+    }
+
+    .filtro {
+        flex: 1 1 100%;
+    }
+
+    .via-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.4rem;
+        padding: 0.7rem;
+    }
+
+    .via-actions {
+        align-self: flex-end;
+    }
+
+    .podium-visual {
+        gap: 1rem;
+        height: 200px;
+    }
+
+    .podium-position {
+        width: 90px;
+        padding: 0.3rem;
+    }
+
+    .podium-icon {
+        font-size: 1.6rem;
+    }
+
+    .podium-position .name {
+        font-size: 0.75rem;
+    }
+
+    .podium-position .score {
+        font-size: 0.75rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .podium-visual {
+        gap: 0.7rem;
+        height: 120px;
+    }
+
+    .podium-position {
+        width: 60px;
+    }
+
+    .podium-position .name {
+        font-size: 0.7rem;
+    }
+
+    .podium-position i {
+        font-size: 1.3rem;
+    }
+}

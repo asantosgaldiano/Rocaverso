@@ -1,0 +1,98 @@
+<div class="vias-container">
+
+  <div class="vias-header">
+    <div>
+      <h2 class="vias-title">Gestión de Vías</h2>
+      <p class="vias-subtitle">Administración de vías del rocódromo</p>
+    </div>
+
+    <div class="vias-buttons">
+      <button class="btn-volver" (click)="volverAlPanel()">
+        <i class="bi bi-arrow-left"></i> Volver al panel
+      </button>
+      <a routerLink="/admin/vias/alta" class="btn-primario">
+        Nueva Vía
+      </a>
+    </div>
+  </div>
+
+  @if (vias.length > 0) {
+    <div class="vias-table-wrapper">
+      <table class="vias-table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Tipo</th>
+            <th>Dificultad</th>
+            <th>Ubicación</th>
+            <th>Estado</th>
+            <th class="text-right">Acciones</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          @for (via of vias; track via.idVia) {
+            <tr>
+              <td>{{ via.idVia }}</td>
+              <td>{{ via.tipo }}</td>
+              <td>{{ via.dificultad }}</td>
+              <td>{{ via.ubicacion }}</td>
+
+              <td>
+                <span
+                  [ngClass]="[
+                    'estado',
+                    via.estado === 'ACTIVA' ? 'verde' :
+                    via.estado === 'INACTIVA' ? 'rojo' : ''
+                  ]"
+                >
+                  {{ via.estado }}
+                </span>
+              </td>
+
+              <td class="text-right">
+                <div class="acciones-wrapper">
+
+                  <a
+                    [routerLink]="['/admin/vias/editar', via.idVia]"
+                    class="action-link azul"
+                  >
+                    Editar
+                  </a>
+
+                  <button
+                    *ngIf="via.estado === 'INACTIVA'"
+                    (click)="activar(via.idVia)"
+                    class="action-link verde"
+                  >
+                    Activar
+                  </button>
+
+                  <button
+                    *ngIf="via.estado === 'ACTIVA'"
+                    (click)="desactivar(via.idVia)"
+                    class="action-link dorado"
+                  >
+                    Desactivar
+                  </button>
+
+                  <button
+                    (click)="eliminar(via.idVia)"
+                    class="action-link rojo"
+                  >
+                    Eliminar
+                  </button>
+
+                </div>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+
+  } @else {
+    <p class="vias-empty">No hay vías registradas todavía.</p>
+  }
+
+</div>

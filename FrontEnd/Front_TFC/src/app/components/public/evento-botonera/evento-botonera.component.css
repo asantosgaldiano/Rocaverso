@@ -1,0 +1,77 @@
+/* Evento-botonera */
+.evento-botonera {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+.evento-botonera .btn {
+    min-width: 110px;
+    font-weight: 600;
+    border-radius: 0.5rem;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    box-shadow: 0 2px 5px rgb(0 0 0 / 0.1);
+}
+
+/* Botones outline (azul-verde) personalizados */
+.evento-botonera .btn-outline-primary {
+    border-color: var(--verde-principal);
+    color: var(--verde-principal);
+}
+
+.evento-botonera .btn-outline-primary:hover {
+    background-color: var(--verde-principal);
+    color: white;
+    box-shadow: 0 4px 12px rgb(46 139 139 / 0.5);
+}
+
+/* Botones outline-warning (amarillo-dorado) */
+.evento-botonera .btn-outline-warning {
+    border-color: var(--dorado-acento);
+    color: var(--dorado-acento);
+}
+
+.evento-botonera .btn-outline-warning:hover {
+    background-color: var(--dorado-acento);
+    color: white;
+    box-shadow: 0 4px 12px rgb(212 175 55 / 0.5);
+}
+
+/* Botones outline-danger */
+.evento-botonera .btn-outline-danger {
+    border-color: #dc3545;
+    color: #dc3545;
+}
+
+.evento-botonera .btn-outline-danger:hover {
+    background-color: #dc3545;
+    color: white;
+    box-shadow: 0 4px 12px rgb(220 53 69 / 0.5);
+}
+
+/* Botón reservar (verde sólido) */
+.evento-botonera .btn-success {
+    background-color: var(--verde-principal);
+    border-color: var(--verde-principal);
+    color: white;
+    font-weight: 700;
+    box-shadow: 0 4px 12px rgb(46 139 139 / 0.4);
+}
+
+.evento-botonera .btn-success:hover {
+    background-color: var(--verde-oscuro);
+    border-color: var(--verde-oscuro);
+    box-shadow: 0 6px 16px rgb(36 109 109 / 0.7);
+    color: white;
+    text-decoration: none;
+}
+
+/* Responsive: en pantallas pequeñas los botones ocupan casi toda la fila */
+@media (max-width: 576px) {
+  .evento-botonera .btn {
+    flex: 1 1 100%;
+    min-width: auto;
+  }
+}

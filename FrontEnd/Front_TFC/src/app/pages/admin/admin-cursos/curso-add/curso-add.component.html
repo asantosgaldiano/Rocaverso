@@ -1,0 +1,206 @@
+<section class="curso-add-container">
+  <div class="curso-card">
+
+    <!-- HEADER -->
+    <div class="curso-header">
+      <h2>Crear Nuevo Curso</h2>
+      <p>Rellena todos los campos para registrar un curso</p>
+    </div>
+
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+      <!-- NOMBRE -->
+      <div class="campo">
+        <label>Nombre del curso</label>
+        <input type="text" formControlName="nombre" placeholder="Nombre del curso" />
+        @if (checkControl('nombre','required')) {
+          <small>El nombre es obligatorio.</small>
+        }
+        <small *ngIf="form.get('nombre')?.invalid && form.get('nombre')?.touched">
+          El nombre es obligatorio.
+        </small>
+      </div>
+
+      <!-- ZONA -->
+      <div class="campo">
+        <label>Zona</label>
+        <select formControlName="zona">
+          <option value="">Seleccione una zona</option>
+          @for (z of zonas; track z) {
+            <option [value]="z">{{ z }}</option>
+          }
+        </select>
+        @if (checkControl('zona','required')) {
+          <small>La zona es obligatoria.</small>
+        }
+        <small *ngIf="form.get('zona')?.invalid && form.get('zona')?.touched">
+          La zona es obligatoria.
+        </small>
+      </div>
+
+      <!-- DESCRIPCIÓN -->
+      <div class="campo">
+        <label>Descripción</label>
+        <textarea rows="2" formControlName="descripcion" placeholder="Descripción del curso"></textarea>
+        @if (checkControl('descripcion','required')) {
+          <small>La descripción es obligatoria.</small>
+        }
+        <small *ngIf="form.get('descripcion')?.invalid && form.get('descripcion')?.touched">
+          La descripción es obligatoria.
+        </small>
+      </div>
+
+      <!-- FECHAS -->
+      <div class="campo-group">
+        <div class="campo">
+          <label>Fecha inicio</label>
+          <input type="date" formControlName="fechaInicio" />
+          @if (checkControl('fechaInicio','required')) {
+            <small>La fecha de inicio es obligatoria.</small>
+          }
+        </div>
+
+        <div class="campo">
+          <label>Fecha fin</label>
+          <input type="date" formControlName="fechaFin" />
+          @if (checkControl('fechaFin','required')) {
+            <small>La fecha fin es obligatoria.</small>
+          }
+
+          @if (form.hasError('fechaInvalida') && form.get('fechaFin')?.touched) {
+            <small>La fecha fin no puede ser anterior a la de inicio.</small>
+          }
+          <small *ngIf="form.errors?.['fechaInvalida']">
+            La fecha fin no puede ser anterior a la de inicio.
+          </small>
+        </div>
+      </div>
+
+      <!-- AFORO / MÍNIMO / PRECIO -->
+      <div class="campo-group">
+        <div class="campo">
+          <label>Aforo máximo</label>
+          <input type="number" formControlName="aforoMaximo" />
+          @if (checkControl('aforoMaximo','required')) {
+            <small>El aforo máximo es obligatorio.</small>
+          }
+          @if (checkControl('aforoMaximo','min')) {
+            <small>Debe ser mayor que 0.</small>
+          }
+        </div>
+
+        <div class="campo">
+          <label>Mínimo asistencia</label>
+          <input type="number" formControlName="minimoAsistencia" />
+          @if (checkControl('minimoAsistencia','required')) {
+            <small>El mínimo de asistencia es obligatorio.</small>
+          }
+          @if (checkControl('minimoAsistencia','min')) {
+            <small>No puede ser menor que 0.</small>
+          }
+
+          @if (form.hasError('aforoInvalido') && form.get('minimoAsistencia')?.touched) {
+            <small>El aforo no puede ser menor que el mínimo.</small>
+          }
+          <small *ngIf="form.errors?.['aforoInvalido']">
+            El aforo no puede ser menor que el mínimo.
+          </small>
+        </div>
+
+        <div class="campo">
+          <label>Precio (€)</label>
+          <input type="number" formControlName="precio" />
+          @if (checkControl('precio','required')) {
+            <small>El precio es obligatorio.</small>
+          }
+          @if (checkControl('precio','min')) {
+            <small>El precio no puede ser negativo.</small>
+          }
+        </div>
+      </div>
+
+      <!-- MONITOR -->
+      <div class="campo">
+        <label>Monitor</label>
+        <select formControlName="emailMonitor">
+          <option value="">Seleccione un monitor</option>
+          @for (m of monitores; track m.email) {
+            <option [value]="m.email">{{ m.nombre }} {{ m.apellidos }}</option>
+          }
+        </select>
+        @if (checkControl('emailMonitor','required')) {
+          <small>Debe seleccionar un monitor.</small>
+        }
+        <small *ngIf="form.get('emailMonitor')?.invalid && form.get('emailMonitor')?.touched">
+          Debe seleccionar un monitor.
+        </small>
+      </div>
+
+      <!-- PLANIFICACIONES -->
+      <h3 class="plan-title">Planificaciones</h3>
+
+      <div formArrayName="planificaciones">
+
+        <div class="plan-card" [formGroupName]="i" *ngFor="let p of planificacionesForm.controls; let i = index">
+
+          <div class="campo-group">
+            <div class="campo">
+              <label>Día</label>
+              <select formControlName="diaSemana">
+                <option value="">Seleccione</option>
+                @for (d of diasSemana; track d) {
+                  <option [value]="d">{{ d }}</option>
+                }
+              </select>
+              @if (p.get('diaSemana')?.hasError('required') && p.get('diaSemana')?.touched) {
+                <small>El día es obligatorio.</small>
+              }
+            </div>
+
+            <div class="campo">
+              <label>Hora inicio</label>
+              <input type="time" formControlName="horaInicio" />
+              @if (p.get('horaInicio')?.hasError('required') && p.get('horaInicio')?.touched) {
+                <small>La hora inicio es obligatoria.</small>
+              }
+            </div>
+
+            <div class="campo">
+              <label>Hora fin</label>
+              <input type="time" formControlName="horaFin" />
+              @if (p.get('horaFin')?.hasError('required') && p.get('horaFin')?.touched) {
+                <small>La hora fin es obligatoria.</small>
+              }
+            </div>
+          </div>
+          @if (p.errors?.['horaFinMenor'] && p.touched) {
+            <small>La hora fin no puede ser anterior a la hora inicio.</small>
+          }
+          <small *ngIf="p.errors?.['horaFinMenor'] && p.touched" class="error-alert">
+            La hora fin no puede ser anterior a la hora inicio.
+          </small>
+          
+          <button class="btn-delete" type="button" (click)="eliminarPlanificacion(i)">Eliminar</button>
+        </div>
+      </div>
+
+      <button class="btn-add-plan" type="button" (click)="addPlanificacion()">
+        + Añadir planificación
+      </button>
+
+      <!-- ERROR -->
+      <!-- <div *ngIf="error" class="error-alert">{{ error }}</div> -->
+      @if (error) {
+        <div class="error-alert">{{ error }}</div>
+      }
+      
+      <!-- BOTONES -->
+      <button type="submit" class="btn-submit" [disabled]="form.invalid">Crear Curso</button>
+
+      <button routerLink="/admin/cursos" type="button" class="btn-volver">
+        <i class="bi bi-arrow-left"></i> Volver
+      </button>
+
+    </form>
+  </div>
+</section>

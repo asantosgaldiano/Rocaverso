@@ -1,0 +1,108 @@
+<section class="admin-add-container">
+  <div class="admin-card">
+
+    <!-- Header -->
+    <div class="admin-header">
+      <h2>Registrar Nuevo Administrador</h2>
+      <p>Introduce los datos para crear la cuenta</p>
+    </div>
+
+    <!-- Form -->
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+      <!-- EMAIL -->
+      <div class="campo">
+        <label>Email</label>
+        <input
+          type="email"
+          formControlName="email"
+          placeholder="admin@ejemplo.com"
+        />
+        <small *ngIf="form.controls['email'].invalid && form.controls['email'].touched">
+          Email inválido.
+        </small>
+      </div>
+
+      <!-- NOMBRE -->
+      <div class="campo">
+        <label>Nombre</label>
+        <input
+          type="text"
+          formControlName="nombre"
+          placeholder="Nombre del administrador"
+        />
+        <small *ngIf="form.controls['nombre'].invalid && form.controls['nombre'].touched">
+          El nombre es obligatorio.
+        </small>
+      </div>
+
+      <!-- APELLIDOS -->
+      <div class="campo">
+        <label>Apellidos</label>
+        <input
+          type="text"
+          formControlName="apellidos"
+          placeholder="Apellidos del administrador"
+        />
+        <small *ngIf="form.controls['apellidos'].invalid && form.controls['apellidos'].touched">
+          Los apellidos son obligatorios.
+        </small>
+      </div>
+
+      <!-- CONTRASEÑA -->
+      <div class="campo">
+        <label>Contraseña</label>
+        <input
+          [type]="mostrarPassword ? 'text' : 'password'"
+          formControlName="password"
+          placeholder="••••••••"
+        />
+        <small *ngIf="form.controls['password'].invalid && form.controls['password'].touched">
+          La contraseña debe tener al menos 6 caracteres.
+        </small>
+      </div>
+
+      <!-- REPETIR CONTRASEÑA -->
+      <div class="campo">
+        <label>Repetir contraseña</label>
+        <input
+          [type]="mostrarPassword ? 'text' : 'password'"
+          formControlName="repetirPassword"
+          placeholder="Repite la contraseña"
+        />
+        <small *ngIf="form.hasError('passwordMismatch') && form.controls['repetirPassword'].touched">
+          Las contraseñas no coinciden.
+        </small>
+
+        <button
+          type="button"
+          class="btn-toggle-password"
+          (click)="toggleMostrarPassword()"
+        >
+          {{ mostrarPassword ? 'Ocultar contraseñas' : 'Mostrar contraseñas' }}
+        </button>
+      </div>
+
+      <!-- ERROR -->
+      <div *ngIf="error" class="error-alert">{{ error }}</div>
+
+      <!-- SUBMIT -->
+      <button
+        type="submit"
+        class="btn-submit"
+        [disabled]="form.invalid || loading"
+      >
+        @if (!loading) {
+          Registrar Administrador
+        } @else {
+          Cargando...
+        }
+      </button>
+
+      <!-- VOLVER -->
+      <button routerLink="/admin/administradores" type="button" class="btn-volver">
+        <i class="bi bi-arrow-left"></i> Volver
+      </button>
+    </form>
+  </div>
+</section>

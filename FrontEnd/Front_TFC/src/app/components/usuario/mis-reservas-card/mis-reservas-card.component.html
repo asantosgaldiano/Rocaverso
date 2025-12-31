@@ -1,0 +1,19 @@
+<div class="user-card">
+  <h3>Mis Reservas</h3>
+
+  <div class="list">
+    @if (reservas().length === 0) {
+      <div class="empty">No tienes reservas.</div>
+    } @else {
+      @for (reserva of reservas(); track reserva.idReserva) {
+        <div class="item">
+          <div class="info">
+            <strong>{{ reserva.nombreEvento }}</strong>
+            <small>{{ reserva.fechaInicioEvento | date:'dd-MM-yyyy' }}</small>
+          </div>
+          <button (click)="verDetalle(reserva.idEvento)">Ver detalle</button>
+        </div>
+      }
+    }
+  </div>
+</div>

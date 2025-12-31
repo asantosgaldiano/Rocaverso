@@ -1,0 +1,158 @@
+.curso-editar-container {
+    max-width: 760px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: var(--blanco);
+    border-radius: 14px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+    font-family: 'Poppins', sans-serif;
+}
+
+.curso-editar-title {
+    text-align: center;
+    color: var(--verde-oscuro);
+    font-size: 1.9rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+}
+
+.curso-editar-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.section-subtitle {
+    font-weight: 700;
+    color: var(--verde-oscuro);
+    margin-top: 1.2rem;
+}
+
+/* CAMPOS */
+.form-group label {
+    font-weight: 600;
+    color: var(--verde-oscuro);
+    font-size: 0.9rem;
+}
+
+.input-field {
+    width: 100%;
+    padding: 0.6rem 0.8rem;
+    border-radius: 8px;
+    border: 1px solid #cfd8d8;
+    background: #f9faf9;
+    transition: all 0.2s ease;
+}
+
+.input-field:focus {
+    border-color: var(--verde-principal);
+    background: white;
+    outline: none;
+}
+
+.input-field.is-invalid {
+    border-color: #c0392b;
+    background: #ffe5e5;
+}
+
+/* FILAS AGRUPADAS */
+.dual-row,
+.triple-row {
+    display: grid;
+    gap: 1rem;
+}
+
+.dual-row {
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.triple-row {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+/* PLANIFICACIONES */
+.planificacion-card {
+    background: white;
+    padding: 1rem;
+    border-radius: 10px;
+    border: 1px solid #e5e7eb;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.05);
+    margin-bottom: 1rem;
+}
+
+.planificacion-card:hover {
+    box-shadow: 0 6px 14px rgba(0,0,0,0.1);
+}
+
+small {
+    color: #c0392b;
+    font-size: 0.8rem;
+}
+
+
+/* BOTONES */
+.btn-submit {
+    background: var(--verde-principal);
+    color: white;
+    padding: 0.75rem;
+    border: none;
+    border-radius: 10px;
+    font-weight: 600;
+    transition: 0.25s ease;
+}
+
+.btn-submit:hover {
+    background: var(--verde-oscuro);
+}
+
+.btn-secondary {
+    background: var(--azul-suave);
+    color: white;
+    padding: 0.6rem 1rem;
+    border-radius: 10px;
+    border: none;
+    font-weight: 600;
+}
+
+.btn-secondary:hover {
+    background: var(--verde-oscuro);
+}
+
+.btn-danger.small {
+    padding: 0.35rem 0.6rem;
+    font-size: 0.85rem;
+    border-radius: 8px;
+    background: #c0392b;
+    color: white;
+    border: none;
+}
+
+.btn-volver {
+    display: inline-block;
+    margin-top: 1rem;
+    padding: 0.6rem 1.2rem;
+    border: 1px solid var(--verde-principal);
+    color: var(--verde-principal);
+    border-radius: 10px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: 0.25s ease;
+}
+
+.btn-volver:hover {
+    background: var(--verde-principal);
+    color: white;
+}
+
+/* ERROR */
+.error-message {
+    background: rgba(192, 57, 43, 0.18);
+    border-left: 4px solid #c0392b;
+    color: #a62820;   
+    padding: 0.8rem;
+    border-radius: 8px;
+    text-align: center;
+    font-weight: 600;
+    margin-top: 0.8rem;
+    margin-bottom: 0.8rem;
+}

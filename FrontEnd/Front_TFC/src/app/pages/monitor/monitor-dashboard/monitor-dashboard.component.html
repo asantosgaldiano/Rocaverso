@@ -1,0 +1,55 @@
+<div class="monitor-dashboard">
+  <!-- Parte superior -->
+  <section class="monitor-header">
+    <h2>¡Hola {{ nombreMonitor() }}!</h2>
+    <p>¡Gracias por formar a los escaladores del futuro!</p>
+
+    <button class="btn-calendar" (click)="irACalendario()">Ver Calendario</button>
+
+    @if (error()) {
+      <div class="error-box">{{ error() }}</div>
+    }
+  </section>
+
+  <!-- Parte inferior: lista de cursos -->
+  <section>
+    @if (cursos().length > 0) {
+      <div class="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th>Nombre</th>
+              <th>Fechas</th>
+              <th>Estado</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (curso of cursos(); track curso.idCurso) {
+              <tr>
+                <td style="text-align: left;">{{ curso.nombre }}</td>
+                <td>{{ curso.fechaInicio | date:"dd-MM-yyyy" }} <i class="bi bi-chevron-right"></i> {{ curso.fechaFin | date:"dd-MM-yyyy" }}</td>
+                <td>
+                  <span [ngClass]="{
+                    'text-success fw-semibold': curso.estado === 'ACEPTADO',
+                    'text-warning fw-semibold': curso.estado === 'TERMINADO',
+                    'text-danger fw-semibold': curso.estado === 'CANCELADO'
+                  }">
+                    {{ curso.estado }}
+                  </span>
+                </td>
+                <td>
+                  <button class="btn-outline" (click)="verDetalle(curso.idCurso)">
+                    Ver detalle
+                  </button>
+                </td>
+              </tr>
+            }
+          </tbody>
+        </table>
+      </div>
+    } @else {
+      <p class="empty">No tienes cursos asignados.</p>
+    }
+  </section>
+</div>
